@@ -9,11 +9,11 @@
 | password       | string   | null: false |
 | campany_name   | string   |             |
 
-has_one  :buyer_info
-has_one  :address
-has_many :orders
-has_many :comments
-has_many :items
+- has_one  :buyer_info
+- has_one  :address
+- has_many :orders
+- has_many :comments
+- has_many :items
 
 ## Buyer_infoテーブル
 
@@ -23,7 +23,7 @@ has_many :items
 | card_token     | string   | null: false |
 | customer_token | string   | null: false |
 
-belongs_to :user
+- belongs_to :user
 
 ## Addressテーブル
 
@@ -37,7 +37,7 @@ belongs_to :user
 | building_name  | string   | null: false |
 | phone_number   | integer  | null: false |
 
-belongs_to :user
+- belongs_to :user
 
 ## Itemテーブル
 
@@ -51,10 +51,10 @@ belongs_to :user
 | price          | string   | null: false |
 | tag_id         | integer  |             |
 
-belongs_to :user
-belongs_to :order
-has_many :tags ,through :tag_items
-has_many :comments
+- belongs_to :user
+- belongs_to :order
+- has_many :tags ,through :tag_items
+- has_many :comments
 
 ## Tagテーブル
 
@@ -62,7 +62,7 @@ has_many :comments
 | -------------- | -------- | ----------- |
 | name           | string   | references  |
 
-has_many :items, through :tag_items
+- has_many :items, through :tag_items
 
 
 ## Tag_itemテーブル
@@ -72,8 +72,8 @@ has_many :items, through :tag_items
 | item_id        | integer  | references  |
 | tag_id         | integer  | references  |
 
-belongs_to :tag
-belongs_to :item
+- belongs_to :tag
+- belongs_to :item
 
 
 ## Orderテーブル
@@ -87,8 +87,8 @@ belongs_to :item
 | period         | date     | null: false |
 | price          | integer  | null: false |
 
-belongs_to :item
-belongs_to :user
+- belongs_to :item
+- belongs_to :user
 
 ## Commentテーブル
 
@@ -98,5 +98,5 @@ belongs_to :user
 | item_id        | string   | references  |
 | comment        | integer  | null: false |
 
-belongs_to :user
-belongs_to :item
+- belongs_to :user
+- belongs_to :item
