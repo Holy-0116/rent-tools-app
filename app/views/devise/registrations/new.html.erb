@@ -1,0 +1,43 @@
+<div>新規登録</div>
+
+<%= form_with model:@user, url: user_registration_path, local: true do |f| %>
+<div class="form-wrap">
+  <div class="form-text">
+    <label>名前</label>
+  </div>
+  <%= f.text_field :name %>
+</div>
+
+<div class="form-wrap">
+  <div class="form-text">
+    <label>Eメール</label>
+  </div>
+  <%= f.text_field :email %>
+</div>
+
+<div class="form-wrap">
+  <div class="form-text">
+    <label>パスワード</label>
+  </div>
+  <%= f.text_field :password %>
+</div>
+
+<div class="form-wrap">
+  <div class="form-text">
+    <label>パスワード（確認用）</label>
+  </div>
+  <%= f.text_field :password_confirmation %>
+</div>
+
+<div class="form-wrap">
+  <div class="form-text">
+    <label>会社名</label>
+  </div>
+  <%= f.text_field :company_name %>
+</div>
+
+<div class="form_submit">
+  <%= f.submit "新規登録"%>
+</div>
+
+<% end%>

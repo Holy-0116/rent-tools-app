@@ -1,0 +1,22 @@
+<div class="header">
+  <div class="header-right">
+  </div>
+  <div class="header-left">
+    
+    <% if current_user %>
+      <div class="login_user">
+        <%= current_user.name %>
+      </div>
+      <div class="sign-out">
+        <%=link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </div>
+    <% else %>
+      <div class="sign-up">
+        <%= link_to "新規登録", new_user_registration_path %>
+      </div>
+      <div class="sign-in">
+        <%=link_to "ログイン", new_user_session_path %>
+      </div>
+    <% end %>
+  </div>
+</div>

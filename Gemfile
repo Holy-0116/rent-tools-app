@@ -58,3 +58,9 @@ group :production do
 end
 
 gem 'rename'
+gem 'devise'
+gem 'pry-rails'
+gem 'rubocop'
+gem 'rspec-rails'
+gem 'factory_bot_rails'
+gem 'faker'
