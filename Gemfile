@@ -58,3 +58,6 @@ group :production do
 end
 
 gem 'rename'
+gem 'devise'
+gem 'pry-rails'
+gem 'rubocop'
