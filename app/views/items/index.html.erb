@@ -22,10 +22,25 @@
 </div>
 <div class="wrapper">
   <div class="main-content">
+  <%# 商品一覧 %>
+    <div class=items-field>
+    <% @items.each do |item| %>
+      <div class=item>
+        <div class=item-name><%= item.name %></div>
+        <div class=item-image>
+          <%=image_tag item.image.variant(resize: '100 x 100')  %>
+          <div class=item-price><%= item.price %>円</div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+    <%# /商品一覧 %>
+   <%# 出品ボタン  %>
     <div class="new-item-btn">
       <%= link_to new_item_path do %>
         <span>出品する</span>
       <% end %>
+      <%# /出品ボタン %>
     </div>
   </div>
 </div>
