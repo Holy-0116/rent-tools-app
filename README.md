@@ -41,15 +41,16 @@
 
 ## Itemテーブル
 
-| Column         | Type     | Options     |
-| -------------- | -------- | ----------- |
-| name           | string   | references  |
-| status_id      | integer  | null: false |
-| size           | string   |             |
-| delivery_fee   | string   | null: false |
-| delivery_date  | string   | null: false |
-| price          | string   | null: false |
-| tag_id         | integer  |             |
+| Column            | Type     | Options     |
+| ----------------- | -------- | ----------- |
+| user              | string   | references  |
+| name              | string   | null: false |
+| explanation       | text     | null: false |
+| status_id         | integer  | null: false |
+| size              | string   | null: false |
+| delivery_fee_id   | string   | null: false |
+| delivery_date_id  | string   | null: false |
+| price             | string   | null: false |
 
 - belongs_to :user
 - belongs_to :order
