@@ -1,0 +1,31 @@
+<div class=wrapper>
+<%# 商品詳細 %>
+  <div class=item-title>
+    <%= @item.name %>
+  </div>
+  <div class="item-image">
+    <%= image_tag @item.image.variant(resize: "200 x 200")%>
+  </div>
+  <div class="">
+    <%= @item.explanation %>
+  </div>
+  <div class="">
+    <%= @item.size %>
+  </div>
+  <div class="">
+    <%= @item.status.name %>
+  </div>
+  <div class="">
+    <%= @item.delivery_fee.name %>
+  </div>
+  <div class="">
+    <%= @item.delivery_date.name %>
+  </div>
+  <div class="">
+    <%= @item.price %>円
+  </div>
+<%# /商品詳細 %>
+
+<%= link_to "商品一覧へ戻る", root_path %>
+
+</div>
