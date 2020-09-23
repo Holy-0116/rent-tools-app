@@ -1,0 +1,69 @@
+<div class="wrapper">
+  <h2>商品情報入力</h2>
+  <div class="item-form">
+    <%= form_with model: @item, local: true do |f|%>
+      <div class="form-wrap">
+        <div class="form-text">
+          <label>商品名</label>
+        </div>
+        <%= f.text_field :name, placeholder: "商品名" %>
+      </div>
+
+      <div class="form-wrap">
+        <div class="form-text">
+          <label>画像</label>
+        </div>
+        <%= f.file_field :image, placeholder: "" %>
+      </div>
+
+      <div class="form-wrap">
+        <div class="form-text">
+          <label>商品の説明</label>
+        </div>
+        <%= f.text_field :explanation, placeholder: "商品の説明" %>
+      </div>
+
+      <div class="form-wrap">
+        <div class="form-text">
+          <label>サイズ</label>
+        </div>
+        <%= f.text_field :size, placeholder: "例）15cm" %>
+      </div>
+
+      <div class="form-wrap">
+        <div class="form-text">
+          <label>商品の状態</label>
+        </div>
+        <%= f.collection_select :status_id, Status.all, :id, :name %>
+      </div>
+
+      <div class="form-wrap">
+        <div class="form-text">
+          <label>配送料</label>
+        </div>
+        <%= f.collection_select :delivery_fee_id, DeliveryFee.all, :id, :name %>
+      </div>
+
+      <div class="form-wrap">
+        <div class="form-text">
+          <label>発送までの日数</label>
+        </div>
+        <%= f.collection_select :delivery_date_id, DeliveryDate.all, :id, :name %>
+      </div>
+
+      <div class="form-wrap">
+        <div class="form-text">
+          <label>金額（単価）</label>
+        </div>
+        <%= f.text_field :price, placeholder: "" %>円
+      </div>
+
+      </div>
+        <%= f.submit "出品する" %>
+      </div>
+
+
+    <% end %>
+  </div>  
+
+</div>
