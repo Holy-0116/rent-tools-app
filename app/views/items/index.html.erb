@@ -1,51 +1,81 @@
 <div class="header">
-  <div class="header-right">
-  </div>
-  <div class="header-left">
-    
-    <% if current_user %>
-      <div class="login_user">
-        <%= current_user.name %>
-      </div>
-      <div class="sign-out">
-        <%=link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </div>
-    <% else %>
-      <div class="sign-up">
-        <%= link_to "新規登録", new_user_registration_path %>
-      </div>
-      <div class="sign-in">
-        <%=link_to "ログイン", new_user_session_path %>
-      </div>
-    <% end %>
-  </div>
+  <%= render "shared/header.html.erb"%>
 </div>
+  
 <div class="wrapper">
-  <div class="main-content">
-  <%# 商品一覧 %>
-    <div class=items-field>
-      <li>
-        <% @items.each do |item| %>
-          <%= link_to item_path(item) do %>
-            <div class=item>
-              <div class=item-name><%= item.name %></div>
-              <div class=item-image>
-                <%=image_tag item.image.variant(resize: '100 x 100')  %>
-              </div>  
-                <div class=item-price><%= item.price %>円</div>
-            </div>
-          <% end %>
-        <% end %>
-      </li>
-    </div>
-  <%# /商品一覧 %>
-
-  <%# 出品ボタン  %>
-    <div class="new-item-btn">
-      <%= link_to new_item_path do %>
-        <span>出品する</span>
-      <% end %>
-  <%# /出品ボタン %>
+  <%# トップ画像 %>
+  <div class="top-field">
+    <h1 class="top-text">創造力を実現するための手助けします</h1>
+  </div>
+  <%# サービス紹介 %>
+  <div class="info-field">
+    <div class="container">
+      <h2 class="content-title">RENT-Toolsとは？</h2>
+        <p>testtesttesttesttesttesttesttesttesttesttesttest</p>
+        <p>testtesttesttesttesttesttesttesttesttesttesttest</p>
+        <p>testtesttesttesttesttesttesttesttesttesttesttest</p>
+        <p>testtesttesttesttesttesttesttesttesttesttesttest</p>
     </div>
   </div>
+  <div class="main-field">
+    <div class="container">
+      <%# 商品一覧 %>
+      <h2 class="content-title">商品一覧</h2>
+      <ul class="items-field">
+          <% @items.each do |item| %>
+            <%= link_to item_path(item) do %>
+            <li class= item-list>
+              <div class="item">
+                <div class="item-name"><%= item.name %></div>
+                <div class="item-image-field">
+                  <%=image_tag item.image,class:"item-image"  %>
+                </div>  
+                  <div class="item-price"><%= item.price %>円</div>
+              </div>
+            </li>
+            <% end %>
+          <% end %>
+      </ul>
+    </div>
+  </div>
+  <footer>
+      <div class="footer-field">
+        <div class="footer-content">
+          <h3 class="footer-title">RENT-Toolsについて</h3>
+            <ul>
+              <li><a href="#">会社概要</a></li>
+              <li><a href="#">採用情報</a></li>
+              <li><a href="#">公式ブログ</a></li>
+            </ul>
+        </div>
+        <div class="footer-content">
+          <h3 class="footer-title">利用規約</h3>
+            <ul>
+              <li><a href="#">プライバシーポリシー</a></li>
+              <li><a href="#">RENTーTools利用規約</a></li>
+              <li><a href="#">コンプライアンスポリシー</a></li>
+            </ul>
+        </div>
+        <div class="footer-content">
+          <h3 class="footer-title">お問い合わせと各種情報</h3>
+          <ul>
+            <li><a href="#">RENTーToolsガイド</a></li>
+            <li><a href="#">配送ガイド</a></li>
+            <li><a href="#">個人データの安全管理に係る基本方針</a></li>
+          </ul>
+        </div>
+        
+      </div>
+  </footer>
 </div>
+ 
+
+    <%# 出品ボタン  %>
+    <div class="new-item-btn">
+      <span>出品する</span>
+      <%= link_to new_item_path do %>
+        <%= image_tag src="camera.png", class:"item-btn-image"%>
+      <% end %>
+    </div>
+   
+

@@ -1,0 +1,45 @@
+/* header */
+.header-field {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  margin: 10px 60px 0px 60px;
+}
+/* header-left */
+.logo-image {
+  height: 80px;
+  width: 200px;
+}
+/* header-right */
+.header-right { 
+  width: 600px;
+}
+.right-upper {
+  display: flex;
+  justify-content: space-between;
+}
+.category a{
+  color: black;
+  font-weight: bold;
+}
+.search-form{
+  width: 300px;
+}
+.right-bottom {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+.login-user {
+  font-weight: bold;
+  height: 30px;
+}
+
+.right-btn {
+  margin-left: 20px;
+}
+
+.btn {
+  text-decoration: none;
+  color: black;
+}
