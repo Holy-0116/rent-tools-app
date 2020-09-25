@@ -1,21 +1,25 @@
-<div>ログイン</div>
+<div class="wrapper">
+<div class="session-container">
+    <%= link_to (image_tag src="logo.jpg", class: "logo-image" ),root_path %>
+    <div class="form-title">ログイン</div>
+    <%= form_with model:@user, url: user_session_path, local: true ,class: "user-form" do |f| %>
+      <div class="form-wrap">
+        <div class="form-text">
+          <label>Eメール</label>
+        </div>
+        <%= f.text_field :email, class: "form", placeholder:"登録時のメールアドレス" %>
+      </div>
 
-<%= form_with model:@user, url: user_session_path, local: true do |f| %>
-  <div class="form-wrap">
-  <div class="form-text">
-    <label>Eメール</label>
+      <div class="form-wrap">
+        <div class="form-text">
+          <label>パスワード</label>
+        </div>
+        <%= f.text_field :password, class: "form", placeholder:"登録時のパスワード", type: "password" %>
+      </div>
+
+      <div class="form_submit">
+        <%= f.submit "ログイン", class: "form form-btn" %>
+      </div>
+    <% end%>
   </div>
-  <%= f.text_field :email %>
 </div>
-
-<div class="form-wrap">
-  <div class="form-text">
-    <label>パスワード</label>
-  </div>
-  <%= f.text_field :password %>
-</div>
-
-<div class="form_submit">
-  <%= f.submit "ログイン"%>
-</div>
-<% end%>
