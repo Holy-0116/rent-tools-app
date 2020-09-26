@@ -1,31 +1,60 @@
+<div class="header">
+  <%= render "shared/header.html.erb" %>
+</div>
+
 <div class=wrapper>
-<%# 商品詳細 %>
-  <div class=item-title>
-    <%= @item.name %>
-  </div>
-  <div class="item-image">
-    <%= image_tag @item.image.variant(resize: "200 x 200")%>
-  </div>
-  <div class="">
-    <%= @item.explanation %>
-  </div>
-  <div class="">
-    <%= @item.size %>
-  </div>
-  <div class="">
-    <%= @item.status.name %>
-  </div>
-  <div class="">
-    <%= @item.delivery_fee.name %>
-  </div>
-  <div class="">
-    <%= @item.delivery_date.name %>
-  </div>
-  <div class="">
-    <%= @item.price %>円
-  </div>
-<%# /商品詳細 %>
+  <div class="item-container">
+    <div class="item-field">
+      <%# 商品詳細 %>
+        <div class=item-name-box>
+          <%= @item.name %>
+        </div>
+        <div class="item-image-box">
+          <%= image_tag @item.image, class:"item-image" %>
+        </div>
 
-<%= link_to "商品一覧へ戻る", root_path %>
+        <div class="item-explanation">
+            <%= @item.explanation %>
+          </div>
+        
+          
+        <table  class="details">
+          <tbody>
+            <tr class="detail">
+              <th class="detail-name">出品者</th>
+              <td class="detail-text"><%= @item.user.name %></td>  
+            </tr>
 
+            <tr class="detail">
+              <th class="detail-name">サイズ</th>
+              <td class="detail-text"><%= @item.size %></td>  
+            </tr>
+
+            <tr class="detail">
+              <th class="detail-name">状態</th>
+              <td class="detail-text"><%= @item.status.name %></td>
+            </tr>
+
+            <tr class="detail">
+              <th class="detail-name">配送費</th>
+              <td class="detail-text"><%= @item.delivery_fee.name %></td>  
+            </tr>
+
+            <tr class="detail">
+              <th class="detail-name">配送までの日数</th>
+              <td class="detail-text"><%= @item.delivery_date.name %></td>
+            </tr>
+
+            <tr class="detail">
+              <th class="detail-name">一日あたりの金額</th>
+              <td class="detail-text"><%= @item.price %>円
+              </td>  
+            </tr>
+          <tbody>
+        </table>
+      <%# /商品詳細 %>
+
+    </div>
+    
+  </div>
 </div>
