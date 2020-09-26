@@ -1,0 +1,25 @@
+
+
+.item-form {
+  margin: auto;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+.select-form {
+  width: 200px;
+  height: 40px;
+  margin: auto;
+  /* margin-left:  auto; */
+}
+.form-half-wrap {
+  margin-top: 20px;
+  text-align: right;
+}
+.price-form {
+  width: 200px;
+  height: 40px;
+  border: none;
+  border-bottom: 1px black solid;
+  text-align: right;
+}

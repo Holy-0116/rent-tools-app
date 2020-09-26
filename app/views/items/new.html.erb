@@ -1,69 +1,74 @@
 <div class="wrapper">
-  <h2>商品情報入力</h2>
-  <div class="item-form">
-    <%= form_with model: @item, local: true do |f|%>
-      <div class="form-wrap">
-        <div class="form-text">
-          <label>商品名</label>
+  <div class="form-container"> 
+    <div class="title-field">
+      <%= link_to (image_tag src="logo.jpg", class: "logo-image" ),root_path %>
+      <h2 class="form-title">商品情報入力</h2>
+    </div>
+    <div class="item-form">
+      <%= form_with model: @item, local: true, class: "item-form" do |f|%>
+        <div class="form-wrap">
+          <div class="form-text">
+            <label>商品名</label><span class="required">必須</span>
+          </div>
+          <%= f.text_field :name, placeholder: "商品名", class: "form" %>
         </div>
-        <%= f.text_field :name, placeholder: "商品名" %>
-      </div>
 
-      <div class="form-wrap">
-        <div class="form-text">
-          <label>画像</label>
+        <div class="form-wrap">
+          <div class="form-text">
+            <label>画像</label><span class="required">必須</span>
+          </div>
+          <%= f.file_field :image, placeholder: "" %>
         </div>
-        <%= f.file_field :image, placeholder: "" %>
-      </div>
 
-      <div class="form-wrap">
-        <div class="form-text">
-          <label>商品の説明</label>
+        <div class="form-wrap">
+          <div class="form-text">
+            <label>商品の説明</label><span class="required">必須</span>
+          </div>
+          <%= f.text_area :explanation, placeholder: "商品の説明(120文字)", class: "form",size: "20x6" %>
         </div>
-        <%= f.text_field :explanation, placeholder: "商品の説明" %>
-      </div>
 
-      <div class="form-wrap">
-        <div class="form-text">
-          <label>サイズ</label>
+        <div class="form-wrap">
+          <div class="form-text">
+            <label>サイズ</label><span class="required">必須</span>
+          </div>
+          <%= f.text_field :size, placeholder: "例）15cm" , class: "form"%>
         </div>
-        <%= f.text_field :size, placeholder: "例）15cm" %>
-      </div>
 
-      <div class="form-wrap">
-        <div class="form-text">
-          <label>商品の状態</label>
+        <div class="form-half-wrap">
+          <div class="form-text">
+            <label>商品の状態</label><span class="required">必須</span>
+          </div>
+          <%= f.collection_select :status_id, Status.all, :id, :name, {},{class: "select-form"} %>
         </div>
-        <%= f.collection_select :status_id, Status.all, :id, :name %>
-      </div>
 
-      <div class="form-wrap">
-        <div class="form-text">
-          <label>配送料</label>
+        <div class="form-half-wrap">
+          <div class="form-text">
+            <label>配送料</label><span class="required">必須</span>
+          </div>
+          <%= f.collection_select :delivery_fee_id, DeliveryFee.all, :id, :name, {},{class: "select-form"} %>
         </div>
-        <%= f.collection_select :delivery_fee_id, DeliveryFee.all, :id, :name %>
-      </div>
 
-      <div class="form-wrap">
-        <div class="form-text">
-          <label>発送までの日数</label>
+        <div class="form-half-wrap">
+          <div class="form-text">
+            <label>発送までの日数</label><span class="required">必須</span>
+          </div>
+          <%= f.collection_select :delivery_date_id, DeliveryDate.all, :id, :name, {},{class: "select-form"} %>
         </div>
-        <%= f.collection_select :delivery_date_id, DeliveryDate.all, :id, :name %>
-      </div>
 
-      <div class="form-wrap">
-        <div class="form-text">
-          <label>金額（単価）</label>
+        <div class="form-half-wrap">
+          <div class="form-text">
+            <label>金額（単価）</label><span class="required">必須</span>
+          </div>
+          <span>￥</span>
+          <%= f.text_field :price, placeholder: "500" , class: "price-form"%>
         </div>
-        <%= f.text_field :price, placeholder: "" %>円
-      </div>
 
-      </div>
-        <%= f.submit "出品する" %>
-      </div>
+        <div class="form-wrap">
+          <%= f.submit "出品する", class: "form form-btn"%>
+        </div>
 
 
-    <% end %>
-  </div>  
-
+      <% end %>
+    </div>  
+  </div>
 </div>

@@ -1,9 +1,10 @@
 <div class="wrapper">
   
-  <div class="user-container">
-    <%= link_to (image_tag src="logo.jpg", class: "logo-image" ),root_path %>
-    <div class="form-title">会員情報入力</div>
-
+  <div class="form-container">
+    <div class="title-field">
+      <%= link_to (image_tag src="logo.jpg", class: "logo-image" ),root_path %>
+      <div class="form-title">会員情報入力</div>
+    </div>
     <%= form_with model:@user, url: user_registration_path, local: true, class: "user-form" do |f| %>
       <div class="form-wrap">
         <div class="form-text">
