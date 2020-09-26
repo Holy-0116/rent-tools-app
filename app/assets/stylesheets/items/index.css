@@ -10,8 +10,11 @@ a {
 }
 /* 背景 */
 .wrapper{
+  height: 100vh;
+  padding-top: 90px;
   background-color:ivory;
   overflow: hidden;
+  overflow: scroll;
 }
 /* トップの画像 */
 .top-field {
@@ -28,7 +31,6 @@ a {
 }
 /* 共有のブロック */
 .container{
-  overflow: scroll;
   padding: 100px 50px 0px 50px;
   text-align: center;
   padding-bottom: 80px;
