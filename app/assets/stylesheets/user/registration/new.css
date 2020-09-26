@@ -1,5 +1,4 @@
-.user-container {
-  text-align: center;
+.form-container {
   background-color: white;
   width: 600px;
   box-shadow: 3px 3px 3px gray;
@@ -7,6 +6,9 @@
   margin-top: 100px;
   margin-bottom: 50px;
   padding: 50px 10px 50px 10px; 
+}
+.title-field{
+  text-align: center;
 }
 .user-form {
   margin: auto;
