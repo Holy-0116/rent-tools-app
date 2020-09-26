@@ -4,4 +4,5 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_fee
   belongs_to_active_hash :delivery_date
   has_one_attached :image
+  belongs_to :user
 end
