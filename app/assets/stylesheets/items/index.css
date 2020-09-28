@@ -18,7 +18,7 @@ a {
 }
 /* トップの画像 */
 .top-field {
-  height: 600px;
+  height: 700px;
   background-image: url("../top_image.jpg");
   background-size: cover;
   background-repeat: no-repeat;
