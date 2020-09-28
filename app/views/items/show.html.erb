@@ -31,6 +31,11 @@
             </tr>
 
             <tr class="detail">
+              <th class="detail-name">カテゴリー</th>
+              <td class="detail-text"><%= @item.category.name %></td>
+            </tr>
+
+            <tr class="detail">
               <th class="detail-name">状態</th>
               <td class="detail-text"><%= @item.status.name %></td>
             </tr>
@@ -53,8 +58,14 @@
           <tbody>
         </table>
       <%# /商品詳細 %>
-
     </div>
     
+    <%# ボタン %>
+    <div class="btn-field">
+      <div class="item-btn">
+        <%= link_to "編集",  edit_item_path(@item), class: "edit-btn" %>
+      </div>
+    </div>
+
   </div>
 </div>
