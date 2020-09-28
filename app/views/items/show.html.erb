@@ -62,9 +62,11 @@
     
     <%# ボタン %>
     <div class="btn-field">
+      <% if current_user == @item.user%>
       <div class="item-btn">
         <%= link_to "編集",  edit_item_path(@item), class: "edit-btn" %>
       </div>
+      <% end %>
     </div>
 
   </div>
