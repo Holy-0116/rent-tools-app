@@ -1,0 +1,80 @@
+<div class="wrapper">
+  <div class="form-container"> 
+    <div class="title-field">
+      <%= link_to (image_tag src="logo.jpg", class: "logo-image" ),root_path %>
+      <h2 class="form-title">商品情報入力</h2>
+    </div>
+    <div class="item-form">
+      <%= form_with model: @item, url:item_path(@item), local: true, class: "item-form" do |f|%>
+        <div class="form-wrap">
+          <div class="form-text">
+            <label>商品名</label><span class="required">必須</span>
+          </div>
+          <%= f.text_field :name, placeholder: "商品名", class: "form" %>
+        </div>
+
+        <div class="form-wrap">
+          <div class="form-text">
+            <label>画像</label><span class="required">必須</span>
+          </div>
+          <%= f.file_field :image, placeholder: "", value: @item.image%>
+        </div>
+
+        <div class="form-wrap">
+          <div class="form-text">
+            <label>商品の説明</label><span class="required">必須</span>
+          </div>
+          <%= f.text_area :explanation, placeholder: "商品の説明(120文字)", class: "form",size: "20x6" %>
+        </div>
+
+        <div class="form-wrap">
+          <div class="form-text">
+            <label>サイズ</label><span class="required">必須</span>
+          </div>
+          <%= f.text_field :size, placeholder: "例）15cm" , class: "form"%>
+        </div>
+
+        <div class="form-half-wrap">
+          <div class="form-text">
+            <label>カテゴリー</label><span class="required">必須</span>
+          </div>
+          <%= f.collection_select :category_id, Category.all, :id, :name, {},{class: "select-form"} %>
+        </div>
+
+        <div class="form-half-wrap">
+          <div class="form-text">
+            <label>商品の状態</label><span class="required">必須</span>
+          </div>
+          <%= f.collection_select :status_id, Status.all, :id, :name, {},{class: "select-form"} %>
+        </div>
+
+        <div class="form-half-wrap">
+          <div class="form-text">
+            <label>配送料</label><span class="required">必須</span>
+          </div>
+          <%= f.collection_select :delivery_fee_id, DeliveryFee.all, :id, :name, {},{class: "select-form"} %>
+        </div>
+
+        <div class="form-half-wrap">
+          <div class="form-text">
+            <label>発送までの日数</label><span class="required">必須</span>
+          </div>
+          <%= f.collection_select :delivery_date_id, DeliveryDate.all, :id, :name, {},{class: "select-form"} %>
+        </div>
+
+        <div class="form-half-wrap">
+          <div class="form-text">
+            <label>金額（単価）</label><span class="required">必須</span>
+          </div>
+          <span>￥</span>
+          <%= f.text_field :price, placeholder: "半角数字 例）500" , class: "price-form"%>
+        </div>
+
+        <div class="form-wrap">
+          <%= f.submit "再出品する", class: "form form-btn"%>
+        </div>
+
+      <% end %>
+    </div>  
+  </div>
+</div>
