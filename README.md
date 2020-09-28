@@ -46,6 +46,7 @@
 | user              | string   | references  |
 | name              | string   | null: false |
 | explanation       | text     | null: false |
+| category_id         | integer  | null: false |
 | status_id         | integer  | null: false |
 | size              | string   | null: false |
 | delivery_fee_id   | string   | null: false |

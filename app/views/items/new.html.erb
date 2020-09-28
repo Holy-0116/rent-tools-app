@@ -36,6 +36,13 @@
 
         <div class="form-half-wrap">
           <div class="form-text">
+            <label>カテゴリー</label><span class="required">必須</span>
+          </div>
+          <%= f.collection_select :category_id, Category.all, :id, :name, {},{class: "select-form"} %>
+        </div>
+
+        <div class="form-half-wrap">
+          <div class="form-text">
             <label>商品の状態</label><span class="required">必須</span>
           </div>
           <%= f.collection_select :status_id, Status.all, :id, :name, {},{class: "select-form"} %>
@@ -60,7 +67,7 @@
             <label>金額（単価）</label><span class="required">必須</span>
           </div>
           <span>￥</span>
-          <%= f.text_field :price, placeholder: "500" , class: "price-form"%>
+          <%= f.text_field :price, placeholder: "半角数字 例）500" , class: "price-form"%>
         </div>
 
         <div class="form-wrap">

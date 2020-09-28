@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :signed_in?, only: [:new, :create]
+
   def index
     @items = Item.all.order(created_at: "DESC")
   end
@@ -22,10 +24,15 @@ class ItemsController < ApplicationController
   end
 
   private
+  def signed_in?
+    unless current_user
+      redirect_to user_session_path
+    end
+  end
 
   def item_params
     params.require(:item)
-    .permit(:name, :image, :explanation, :size, :status_id, :delivery_fee_id, :delivery_date_id, :price).merge(user_id: current_user.id)
+    .permit(:name, :image, :explanation, :size, :category_id, :status_id, :delivery_fee_id, :delivery_date_id, :price).merge(user_id: current_user.id)
   end
 end
 
