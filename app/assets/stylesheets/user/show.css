@@ -1,0 +1,34 @@
+.user-info {
+  margin:30px;
+}
+.user-name {
+  font-size: 40px;
+}
+.info-fields {
+  width: 80%;
+  margin: auto;
+}
+.info-field {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.info-title {
+  font-size: 20px;
+}
+.info {
+  margin-top: 40px;
+  text-align: right;
+  border-bottom: 1px #c3c3c3 solid;
+}
+.edit-btn{
+  background-color: #efefef;
+  width: 50px;
+  border: 1px black solid;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.edit-btn a {
+  color:black;
+  
