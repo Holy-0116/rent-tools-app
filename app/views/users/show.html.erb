@@ -1,0 +1,50 @@
+<div class="wrapper">
+  <div class="form-container">
+    <div class="user-info">
+
+      <div class="user-name">
+        <%= @user.name %>
+      </div>
+      <div class="edit-btn">
+      <%= link_to "編集",  edit_user_path(current_user)%>
+      </div>
+
+      <div class="info-fields">
+        <%= form_with  url: edit_user_path(current_user), local: true do |f| %>
+          <div class="info-field">
+            <div class="info-title">
+              Eメール
+            </div>
+            <div class="info">
+              <%= @user.email %>
+            </div>
+          </div>
+
+          
+          <div class="info-field">
+            <div class="info-title">
+              会社名
+            </div>
+            <div class="info">
+              <%= @user.company_name%>
+            </div>
+          </div>
+
+          <div class="info-field">
+            <div class="info-title">
+              住所
+            </div>
+            <div class="info">
+              <% unless current_user.address %>
+                未登録
+                <%= link_to "登録" , new_user_address_path(current_user),method: :get, local: true %>
+                <% end %>
+            </div>
+          </div>
+          
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

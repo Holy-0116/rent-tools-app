@@ -21,7 +21,7 @@
     <div class="right-bottom">
         <% if current_user %>
           <div class="login-user">
-            <%= current_user.name %>
+            <%= link_to  "#{current_user.name}", user_path(current_user), method: :get %>
           </div>
           <div class="sign-out right-btn">
             <%=link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn" %>

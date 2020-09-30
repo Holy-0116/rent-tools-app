@@ -7,8 +7,11 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :email
-    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: "invalid."}
+    
   end
+    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: "invalid."}
+
 
   has_many :items
+  has_one  :address
 end
