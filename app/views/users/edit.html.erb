@@ -1,0 +1,46 @@
+<div class="wrapper">
+  <div class="form-container">
+    <div class="user-info">
+
+      <div class="user-name">
+        <%= @user.name %>
+      </div>
+
+      <div class="info-fields">
+        <%= form_with model: current_user, url: user_path(current_user),  local: true do |f| %>
+          <div class="info-field">
+            <div class="info-title">
+              Eメール
+            </div>
+            <div class="info">
+              <%= f.text_field :email, class: "form", autofocus: true %>
+             
+            </div>
+          </div>
+
+          
+
+          <div class="info-field">
+            <div class="info-title">
+              会社名
+            </div>
+            <div class="info">
+              <%= f.text_field :company_name, class: "form" %>
+            </div>
+          </div>
+
+          <div class="info-field">
+            <div class="info-title">
+              住所
+            </div>
+            <div class="info">
+              未登録
+            </div>
+          </div>
+          <%= f.submit "変更する"%>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
