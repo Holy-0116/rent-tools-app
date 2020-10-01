@@ -16,7 +16,6 @@
 }
 .info-field {
   margin-top: 30px;
-  display: flex;
   justify-content: space-between;
 }
 .info-title {
@@ -25,7 +24,6 @@
 .info {
   margin-top: 40px;
   text-align: right;
-  border-bottom: 1px #c3c3c3 solid;
 }
 .mypage-edit-btn{
   background-color: #efefef;
