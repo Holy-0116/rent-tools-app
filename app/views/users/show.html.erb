@@ -1,14 +1,23 @@
+<div class="header">
+  <%= render "shared/header.html.erb"%>
+</div>
+
 <div class="wrapper">
   <div class="form-container">
     <div class="user-info">
 
-      <div class="user-name">
-        <%= @user.name %>
-      </div>
-      <div class="edit-btn">
-      <%= link_to "編集",  edit_user_path(current_user)%>
-      </div>
+      <%# <div class="title-field">
+        <h2 class="form-title">ユーザー情報</h2>
+      </div> %>
 
+      <div class="name-field">
+        <div class="user-name">
+          <%= @user.name %>
+        </div>
+        <div class="mypage-edit-btn">
+        <%= link_to "編集",  edit_user_path(current_user)%>
+        </div>
+      </div>
       <div class="info-fields">
         <%= form_with  url: edit_user_path(current_user), local: true do |f| %>
           <div class="info-field">
@@ -35,10 +44,17 @@
               住所
             </div>
             <div class="info">
-              <% unless current_user.address %>
-                未登録
-                <%= link_to "登録" , new_user_address_path(current_user),method: :get, local: true %>
-                <% end %>
+              <% if current_user.address %>
+              <%= current_user.address.postal_code%>
+              <%= current_user.address.prefecture.name%>
+              <%= current_user.address.city_name%>
+              <%= current_user.address.house_number%>
+              <%= current_user.address.building_name%>
+              <%= current_user.address.phone_number%>
+            <% else %>
+              未登録
+              <%= link_to "登録" , new_user_address_path(current_user),method: :get, local: true, class: "regist-btn" %>
+            <% end %>
             </div>
           </div>
           

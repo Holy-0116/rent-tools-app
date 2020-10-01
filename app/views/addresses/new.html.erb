@@ -1,0 +1,74 @@
+<div class="wrapper">
+  <div class="form-container">
+      <div class="title-field">
+        <%= link_to (image_tag src="logo.jpg", class: "logo-image" ),root_path %>
+        <div class="form-title">住所登録</div>
+      </div>
+
+      <div  class="info-fields">
+        <%= form_with model: @address, url: user_addresses_path(current_user), local: true do |f| %>
+
+          <div class="info-field">
+            <div class="info-title">
+              郵便番号(半角数字・ハイフンなし)
+            </div>
+            <div class="info">
+              <%= f.text_field :postal_code %>
+            </div>
+          </div>
+
+          <div class="info-field">
+            <div class="info-title">
+              都道府県
+            </div>
+            <div class="info">
+              <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name,{} %>
+            </div>
+          </div>
+
+          <div class="info-field">
+            <div class="info-title">
+              市区町村
+            </div>
+            <div class="info">
+              <%= f.text_field :city_name %>
+            </div>
+          </div>
+
+          <div class="info-field">
+            <div class="info-title">
+              番地
+            </div>
+            <div class="info">
+              <%= f.text_field :house_number %>
+            </div>
+          </div>
+
+          <div class="info-field">
+            <div class="info-title">
+              建物名
+            </div>
+            <div class="info">
+              <%= f.text_field :building_name %>
+            </div>
+          </div>
+
+          <div class="info-field">
+            <div class="info-title">
+              電話番号(半角数字・ハイフンなし)
+            </div>
+            <div class="info">
+              <%= f.text_field :phone_number %>
+            </div>
+          </div>
+
+          <div class="form-submit">
+            <%= f.submit "登録する", class: "form form-btn"%>
+          </div>
+
+        <% end %>
+      </div>
+
+  </div>
+
+</div>

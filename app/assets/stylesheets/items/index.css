@@ -1,6 +1,8 @@
+/* aタグ共有 */
 a {
   text-decoration: none;
 }
+/* ヘッダー共有ブロック */
 .header {
   position: fixed;
   top: 0px;
@@ -12,7 +14,7 @@ a {
 .wrapper{
   height: 100vh;
   padding-top: 90px;
-  background-color:ivory;
+  background-color: #fffafafa;
   overflow: hidden;
   overflow: scroll;
 }
@@ -29,11 +31,12 @@ a {
   color: white;
   font-size: 30px;
 }
-/* 共有のブロック */
+/* index共有のブロック */
 .container{
-  padding: 100px 50px 0px 50px;
   text-align: center;
   padding-bottom: 80px;
+  margin: auto;
+  width: 80%;
 }
 /* タイトル */
 .content-title {

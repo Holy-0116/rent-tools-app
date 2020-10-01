@@ -64,11 +64,11 @@
     <div class="btn-field">
       <% if current_user == @item.user%>
       <div class="item-btn">
-        <%= link_to "編集",  edit_item_path(@item), class: "edit-btn" %>
+        <%= link_to "編集",  edit_item_path(@item), class: "form edit-btn" %>
       </div>
       <span class="or">or</span>
       <div class="item-btn">
-        <%= link_to "削除", item_path(@item), method: :delete, class: "delete-btn" %>
+        <%= link_to "削除", item_path(@item), method: :delete, class: " form delete-btn" %>
       </div>
       <% end %>
     </div>

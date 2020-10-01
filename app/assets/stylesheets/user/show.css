@@ -4,13 +4,18 @@
 .user-name {
   font-size: 40px;
 }
+.name-field{
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 .info-fields {
   width: 80%;
   margin: auto;
 }
 .info-field {
   margin-top: 30px;
-  display: flex;
   justify-content: space-between;
 }
 .info-title {
@@ -19,16 +24,18 @@
 .info {
   margin-top: 40px;
   text-align: right;
-  border-bottom: 1px #c3c3c3 solid;
 }
-.edit-btn{
+.mypage-edit-btn{
   background-color: #efefef;
   width: 50px;
   border: 1px black solid;
   border-radius: 3px;
   text-align: center;
+  height: 30px;
+  
 }
 
-.edit-btn a {
+.mypage-edit-btn a {
   color:black;
-  
+}
+
