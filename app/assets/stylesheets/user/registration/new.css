@@ -1,8 +1,10 @@
+/* フォーム共通ブロック */
 .form-container {
   background-color: white;
   width: 600px;
   box-shadow: 3px 3px 3px gray;
   margin: auto;
+  margin-top: 50px;
   margin-bottom: 50px;
   padding: 50px 10px 50px 10px; 
 }
@@ -42,6 +44,6 @@
 }
 .form-btn {
   margin-top: 50px;
-  color: white;
-  background-color: limegreen;
+  color: #7f7e7d;
+  background-color: lightgray;
 }

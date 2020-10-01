@@ -1,20 +1,32 @@
+<div class="header">
+  <%= render "shared/header.html.erb"%>
+</div>
+
 <div class="wrapper">
   <div class="form-container">
-    <div class="user-info">
 
-      <div class="user-name">
-        <%= @user.name %>
-      </div>
+    <div class="user-info">
+      
+      
 
       <div class="info-fields">
         <%= form_with model: current_user, url: user_path(current_user),  local: true do |f| %>
           <div class="info-field">
             <div class="info-title">
+              名前
+            </div>
+            <div class="info">
+              <%= f.text_field :name, class: "form", autofocus: true %>
+            </div>
+          </div>
+
+
+          <div class="info-field">
+            <div class="info-title">
               Eメール
             </div>
             <div class="info">
-              <%= f.text_field :email, class: "form", autofocus: true %>
-             
+              <%= f.text_field :email, class: "form" %>
             </div>
           </div>
 
@@ -34,10 +46,23 @@
               住所
             </div>
             <div class="info">
+            <% if current_user.address %>
+              <%= current_user.address.postal_code%>
+              <%= current_user.address.prefecture.name%>
+              <%= current_user.address.city_name%>
+              <%= current_user.address.house_number%>
+              <%= current_user.address.building_name%>
+              <%= current_user.address.phone_number%>
+            <% else %>
               未登録
+              <%= link_to "登録" , new_user_address_path(current_user),method: :get, local: true, class: "regist-btn" %>
+            <% end %>
             </div>
           </div>
-          <%= f.submit "変更する"%>
+
+          <div class="form-submit">
+            <%= f.submit "変更する", class: "form form-btn"%>
+          </div>
         <% end %>
       </div>
 
