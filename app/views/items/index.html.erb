@@ -4,30 +4,31 @@
   
 <div class="wrapper">
   <%# トップ画像 %>
-  <div class="top-field">
-    <h1 class="top-text">創造力を実現するための手助けします</h1>
+  <div class="top-image-field">
+    <h1 class="top-image-text">創造力を実現するための手助けします</h1>
   </div>
   <%# サービス紹介 %>
-  <div class="info-field">
-    <div class="container">
-      <h2 class="content-title">RENT-Toolsとは？</h2>
+  <div class="item--info-field">
+    <div class="top-page-container">
+      <h2 class="top-page-content-title">RENT-Toolsとは？</h2>
         <p>testtesttesttesttesttesttesttesttesttesttesttest</p>
         <p>testtesttesttesttesttesttesttesttesttesttesttest</p>
         <p>testtesttesttesttesttesttesttesttesttesttesttest</p>
         <p>testtesttesttesttesttesttesttesttesttesttesttest</p>
     </div>
   </div>
-  <div class="main-field">
-    <div class="container">
+  <div class="item-main-field">
+    <div class="top-page-container">
+
       <%# 商品一覧 %>
-      <h2 class="content-title">商品一覧</h2>
-      <ul class="items-field">
+      <h2 class="top-page-content-title">商品一覧</h2>
+      <ul class= "index-items-field">
           <% @items.each do |item| %>
             <%= link_to item_path(item) do %>
-            <li class= item-list>
-              <div class="item">
-                <div class="item-name"><%= item.name %></div>
-                <div class="item-image-field">
+            <li class= "index-item-list">
+              <div class="index-item">
+                <div class="index-item-name"><%= item.name %></div>
+                <div class="index-item-image-field">
                   <%=image_tag item.image,class:"item-image"  %>
                 </div>  
                   <div class="item-price"><%= item.price %>円</div>

@@ -1,4 +1,59 @@
-.regist-btn {
+/* aタグ共有 */
+a {
+  text-decoration: none;
+}
+/* ヘッダー共有ブロック */
+.header {
+  position: fixed;
+  top: 0px;
+  width: 100vw;
+  border-bottom: 1px rgba(0, 0, 0, 0.253) solid;
+  background-color:#ffffff;
+}
+/* 背景 */
+.wrapper{
+  height: 100vh;
+  padding-top: 90px;
+  background-color: #fffafafa;
+  overflow: hidden;
+  overflow: scroll;
+}
+.user-edit-form-container {
+  background-color: white;
+  width: 600px;
+  box-shadow: 3px 3px 3px gray;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 50px 10px 50px 10px; 
+}
+.user-edit-info {
+  margin:30px;
+}
+.user-edit-name {
+  font-size: 40px;
+}
+.user-edit-name-field{
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.user-edit-info-fields {
+  width: 80%;
+  margin: auto;
+}
+.user-edit-info-field {
+  margin-top: 30px;
+  justify-content: space-between;
+}
+.user-edit-info-title {
+  font-size: 20px;
+}
+.user-edit-info {
+  margin-top: 40px;
+}
+.user-edit-regist-btn {
   background-color: #efefef;
   padding: 4px;
   border: 1px black solid;
@@ -7,6 +62,6 @@
   color:black;
   margin-left: 5px;
 }
-.regist-btn a {
+.user-edit-regist-btn a {
   width: 80px;
 }

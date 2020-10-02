@@ -18,7 +18,14 @@ a {
   overflow: hidden;
   overflow: scroll;
 }
-.user-form-container {
+.address-title-wrap{
+  text-align: center;
+}
+.address-form-title {
+  font-size: 30px;
+}
+
+.address-form-container {
   background-color: white;
   width: 600px;
   box-shadow: 3px 3px 3px gray;
@@ -27,17 +34,28 @@ a {
   margin-bottom: 50px;
   padding: 50px 10px 50px 10px; 
 }
-.user-title-field{
-  text-align: center;
+.address-form-wrap{
+  margin-top: 20px;
 }
-.user-form-wraps {
+
+.address-form-wraps {
   margin: auto;
   width: 350px;
   display: flex;
   flex-direction: column;
+  
 }
-.user-form-title {
-  font-size: 30px;
+.address-form-text {
+  text-align: left;
+  margin-bottom: 5px;
+}
+.address-form {
+  width: 100%;
+  height: 50px;
+  border: 1px gray solid;
+  box-shadow: 3px 3px 3px gray;
+  border-radius: 3px;
+  padding-left: 8px ; 
 }
 /* 必須マーク共有 */
 .required {
@@ -47,23 +65,19 @@ a {
   padding: 2px;
   border-radius: 1px;
 }
-.user-form-wrap {
+/* 選択ボタン共有 */
+.select-form {
+  width: 200px;
+  height: 40px;
+  margin: auto;
+}
+/* 選択ボタン用共有 */
+.form-half-wrap {
   margin-top: 20px;
+  text-align: right;
 }
-.user-form-text {
-  text-align: left;
-  margin-bottom: 5px;
-}
-.user-form {
-  width: 100%;
-  height: 50px;
-  border: 1px gray solid;
-  box-shadow: 3px 3px 3px gray;
-  border-radius: 3px;
-  padding-left: 8px ;
-}
-.user-form-btn {
-  width: 100%;
+.address-form-btn {
+  width: 100%; 
   height: 50px;
   border: 1px gray solid;
   box-shadow: 3px 3px 3px gray;
