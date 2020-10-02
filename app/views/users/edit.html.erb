@@ -3,49 +3,49 @@
 </div>
 
 <div class="wrapper">
-  <div class="form-container">
+  <div class="user-edit-form-container">
 
-    <div class="user-info">
+    <div class="user-edit-info">
       
       
 
-      <div class="info-fields">
+      <div class="user-edit-info-fields">
         <%= form_with model: current_user, url: user_path(current_user),  local: true do |f| %>
-          <div class="info-field">
-            <div class="info-title">
+          <div class="user-edit-info-field">
+            <div class="user-edit-info-title">
               名前
             </div>
-            <div class="info">
+            <div class="user-edit-info">
               <%= f.text_field :name, class: "form", autofocus: true %>
             </div>
           </div>
 
 
-          <div class="info-field">
-            <div class="info-title">
+          <div class="user-edit-info-field">
+            <div class="user-edit-info-title">
               Eメール
             </div>
-            <div class="info">
+            <div class="user-edit-info">
               <%= f.text_field :email, class: "form" %>
             </div>
           </div>
 
           
 
-          <div class="info-field">
-            <div class="info-title">
+          <div class="user-edit-info-field">
+            <div class="user-edit-info-title">
               会社名
             </div>
-            <div class="info">
+            <div class="user-edit-info">
               <%= f.text_field :company_name, class: "form" %>
             </div>
           </div>
 
-          <div class="info-field">
-            <div class="info-title">
+          <div class="user-edit-info-field">
+            <div class="user-edit-info-title">
               住所
             </div>
-            <div class="info">
+            <div class="user-edit-info">
             <% if current_user.address %>
               <%= current_user.address.postal_code%>
               <%= current_user.address.prefecture.name%>
@@ -55,12 +55,12 @@
               <%= current_user.address.phone_number%>
             <% else %>
               未登録
-              <%= link_to "登録" , new_user_address_path(current_user),method: :get, local: true, class: "regist-btn" %>
+              <%= link_to "登録" , new_user_address_path(current_user),method: :get, local: true, class: "user-edit-regist-btn" %>
             <% end %>
             </div>
           </div>
 
-          <div class="form-submit">
+          <div class="user-edit-form-submit">
             <%= f.submit "変更する", class: "form form-btn"%>
           </div>
         <% end %>

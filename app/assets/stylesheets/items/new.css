@@ -1,25 +1,104 @@
-
-
-.item-form {
+/* aタグ共有 */
+a {
+  text-decoration: none;
+}
+/* ヘッダー共有ブロック */
+.header {
+  position: fixed;
+  top: 0px;
+  width: 100vw;
+  border-bottom: 1px rgba(0, 0, 0, 0.253) solid;
+  background-color:#ffffff;
+}
+/* 背景 */
+.wrapper{
+  height: 100vh;
+  padding-top: 90px;
+  background-color: #fffafafa;
+  overflow: hidden;
+  overflow: scroll;
+}
+.item-form-container {
+  background-color: white;
+  width: 600px;
+  box-shadow: 3px 3px 3px gray;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 50px 10px 50px 10px; 
+}
+.item-title-field{
+  text-align: center;
+}
+.item-form-title {
+  font-size: 30px;
+}
+.item-form-wrap {
+  margin-top: 20px;
+}
+.item-form-text {
+  text-align: left;
+  margin-bottom: 5px;
+}
+.item-form-wraps {
   margin: auto;
   width: 350px;
   display: flex;
   flex-direction: column;
 }
-.select-form {
+.item-form {
+  width: 100%; 
+  height: 50px;
+  border: 1px gray solid;
+  box-shadow: 3px 3px 3px gray;
+  border-radius: 3px;
+  padding-left: 8px ;
+}
+.item-explanation-form {
+  width: 100%; 
+  border: 1px gray solid;
+  box-shadow: 3px 3px 3px gray;
+  border-radius: 3px;
+  padding-left: 8px ;
+}
+.item-select-form {
   width: 200px;
   height: 40px;
   margin: auto;
-  /* margin-left:  auto; */
 }
+/* 選択ボタン用共有 */
 .form-half-wrap {
   margin-top: 20px;
   text-align: right;
 }
-.price-form {
+.item-price-form {
   width: 200px;
   height: 40px;
   border: none;
   border-bottom: 1px black solid;
   text-align: right;
+}
+/* 必須マーク共有 */
+.required {
+  background-color: red;
+  color: white;
+  margin-left: 5px;
+  padding: 2px;
+  border-radius: 1px;
+}
+/* 選択ボタン共有 */
+.select-form {
+  width: 200px;
+  height: 40px;
+  margin: auto;
+}
+.item-form-btn {
+  width: 100%; 
+  height: 50px;
+  border: 1px gray solid;
+  box-shadow: 3px 3px 3px gray;
+  border-radius: 3px;
+  margin-top: 50px;
+  color: #7f7e7d;
+  background-color: lightgray;
 }

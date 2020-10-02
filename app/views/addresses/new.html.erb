@@ -1,69 +1,55 @@
 <div class="wrapper">
-  <div class="form-container">
-      <div class="title-field">
+  <div class="address-form-container">
+      <div class="address-title-wrap">
         <%= link_to (image_tag src="logo.jpg", class: "logo-image" ),root_path %>
-        <div class="form-title">住所登録</div>
+        <div class="address-form-title">住所登録</div>
       </div>
 
-      <div  class="info-fields">
+      <div  class="address-form-wraps">
         <%= form_with model: @address, url: user_addresses_path(current_user), local: true do |f| %>
 
-          <div class="info-field">
-            <div class="info-title">
-              郵便番号(半角数字・ハイフンなし)
+          <div class="address-form-wrap">
+            <div class="address-form-text">
+              <label>郵便番号(半角数字・ハイフンなし)</label><span class="required">必須</span>
+              <%= f.text_field :postal_code, class: "address-form" %>
+
+          <div class="form-half-wrap">
+            <div class="address-form-text">
+              <label>都道府県</label><span class="required">必須</span>
             </div>
-            <div class="info">
-              <%= f.text_field :postal_code %>
-            </div>
+              <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name,{},{class: "select-form"} %>
           </div>
 
-          <div class="info-field">
-            <div class="info-title">
-              都道府県
+          <div class="address-form-wrap">
+            <div class="address-form-text">
+              <label>市区町村</label><span class="required">必須</span>
             </div>
-            <div class="info">
-              <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name,{} %>
-            </div>
+              <%= f.text_field :city_name, class: "address-form" %>
           </div>
 
-          <div class="info-field">
-            <div class="info-title">
-              市区町村
+          <div class="address-form-wrap">
+            <div class="address-form-text">
+              <label>番地</label><span class="required">必須</span>
             </div>
-            <div class="info">
-              <%= f.text_field :city_name %>
-            </div>
+              <%= f.text_field :house_number, class: "address-form" %>
           </div>
 
-          <div class="info-field">
-            <div class="info-title">
-              番地
+          <div class="address-form-wrap">
+            <div class="address-form-text">
+              <label>建物名</label><span class="required">必須</span>
             </div>
-            <div class="info">
-              <%= f.text_field :house_number %>
-            </div>
+              <%= f.text_field :building_name, class: "address-form" %>
           </div>
 
-          <div class="info-field">
-            <div class="info-title">
-              建物名
+          <div class="address-form-wrap">
+            <div class="address-form-text">
+              <label>電話番号(半角数字・ハイフンなし)</label><span class="required">必須</span>
             </div>
-            <div class="info">
-              <%= f.text_field :building_name %>
-            </div>
-          </div>
-
-          <div class="info-field">
-            <div class="info-title">
-              電話番号(半角数字・ハイフンなし)
-            </div>
-            <div class="info">
-              <%= f.text_field :phone_number %>
-            </div>
+              <%= f.text_field :phone_number, class: "address-form" %>
           </div>
 
           <div class="form-submit">
-            <%= f.submit "登録する", class: "form form-btn"%>
+            <%= f.submit "登録する", class: "address-form-btn"%>
           </div>
 
         <% end %>

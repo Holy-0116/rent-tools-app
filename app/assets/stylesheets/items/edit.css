@@ -18,7 +18,7 @@ a {
   overflow: hidden;
   overflow: scroll;
 }
-.user-form-container {
+.item-form-container {
   background-color: white;
   width: 600px;
   box-shadow: 3px 3px 3px gray;
@@ -27,17 +27,56 @@ a {
   margin-bottom: 50px;
   padding: 50px 10px 50px 10px; 
 }
-.user-title-field{
+.item-title-field{
   text-align: center;
 }
-.user-form-wraps {
+.item-form-title {
+  font-size: 30px;
+}
+.item-form-wrap {
+  margin-top: 20px;
+}
+.item-form-text {
+  text-align: left;
+  margin-bottom: 5px;
+}
+.item-form-wraps {
   margin: auto;
   width: 350px;
   display: flex;
   flex-direction: column;
 }
-.user-form-title {
-  font-size: 30px;
+.item-form {
+  width: 100%; 
+  height: 50px;
+  border: 1px gray solid;
+  box-shadow: 3px 3px 3px gray;
+  border-radius: 3px;
+  padding-left: 8px ;
+}
+.item-explanation-form {
+  width: 100%; 
+  border: 1px gray solid;
+  box-shadow: 3px 3px 3px gray;
+  border-radius: 3px;
+  padding-left: 8px ;
+}
+.item-select-form {
+  width: 200px;
+  height: 40px;
+  margin: auto;
+}
+/* 選択ボタン用共有 */
+.form-half-wrap {
+  margin-top: 20px;
+  text-align: right;
+}
+.item-price-form {
+  width: 200px;
+  height: 40px;
+  border: none;
+  border-bottom: 1px black solid;
+  text-align: right;
 }
 /* 必須マーク共有 */
 .required {
@@ -47,23 +86,14 @@ a {
   padding: 2px;
   border-radius: 1px;
 }
-.user-form-wrap {
-  margin-top: 20px;
+/* 選択ボタン共有 */
+.select-form {
+  width: 200px;
+  height: 40px;
+  margin: auto;
 }
-.user-form-text {
-  text-align: left;
-  margin-bottom: 5px;
-}
-.user-form {
-  width: 100%;
-  height: 50px;
-  border: 1px gray solid;
-  box-shadow: 3px 3px 3px gray;
-  border-radius: 3px;
-  padding-left: 8px ;
-}
-.user-form-btn {
-  width: 100%;
+.item-form-btn {
+  width: 100%; 
   height: 50px;
   border: 1px gray solid;
   box-shadow: 3px 3px 3px gray;
