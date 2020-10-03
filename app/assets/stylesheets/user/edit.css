@@ -93,7 +93,6 @@ a {
   background-color: lightgray;
 }
 .address-show-field{
-  height: 50px;
  display: flex;
  justify-content: space-between;
  border-bottom: 1px black solid;
@@ -115,11 +114,14 @@ a {
 .user-address-regist-btn a{
   color: black;
 }
-.address-show {
+.address-show-true {
+  text-align: right;
+}
+.address-show-false {
+  height: 50px;
   display: flex;
   justify-content: center;
-  align-items: center;  
-}
-.lightgray {
+  align-items: center; 
   color: lightgray
 }
+
