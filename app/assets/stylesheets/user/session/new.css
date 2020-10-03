@@ -40,14 +40,7 @@ a {
 .user-form-title {
   font-size: 30px;
 }
-/* 必須マーク共有 */
-.required {
-  background-color: red;
-  color: white;
-  margin-left: 5px;
-  padding: 2px;
-  border-radius: 1px;
-}
+
 .user-form-wrap {
   margin-top: 20px;
 }

@@ -21,7 +21,7 @@ a {
 /* トップの画像 */
 .top-image-field {
   height: 700px;
-  background-image: url("../top_image.jpg");
+  background-image: url("../top_image.png");
   background-size: cover;
   background-repeat: no-repeat;
 }

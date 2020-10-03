@@ -18,50 +18,108 @@ a {
   overflow: hidden;
   overflow: scroll;
 }
+/* マイページの外枠 */
+.user-show-container {
+  margin: 100px 0px;
+  padding: 0px 200px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+/* サイドバー */
+.user-show-sidebar {
+  background-color: white;
+  width: 300px;
+  box-shadow: 3px 3px 3px gray;
+}
+.user-info-content{
+  height: 60px;
+  border-bottom: 1px black solid;
+  display: flex;
+  align-items: center;
+}
+.user-info-content a{
+  color: black;
+  font-size: 20px;
+  margin-left: 10px;
+}
+/* メインフィールド */
+/* 共有 */
+.user-info-field {
+  box-shadow: 3px 3px 3px gray;
+  background-color: white;
+  width: 700px;
+}
+/* edit専用 */
 .user-edit-form-container {
   background-color: white;
   width: 600px;
-  box-shadow: 3px 3px 3px gray;
   margin: auto;
   margin-top: 50px;
   margin-bottom: 50px;
   padding: 50px 10px 50px 10px; 
 }
-.user-edit-info {
-  margin:30px;
-}
-.user-edit-name {
-  font-size: 40px;
-}
-.user-edit-name-field{
-  width: 80%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.user-edit-info-fields {
-  width: 80%;
-  margin: auto;
-}
-.user-edit-info-field {
-  margin-top: 30px;
-  justify-content: space-between;
-}
-.user-edit-info-title {
-  font-size: 20px;
-}
-.user-edit-info {
-  margin-top: 40px;
-}
-.user-edit-regist-btn {
-  background-color: #efefef;
-  padding: 4px;
-  border: 1px black solid;
-  border-radius: 3px;
-  text-align: center;
-  color:black;
+/* 必須マーク共有 */
+.required {
+  background-color: red;
+  color: white;
   margin-left: 5px;
+  padding: 2px;
+  border-radius: 1px;
 }
-.user-edit-regist-btn a {
-  width: 80px;
+.user-form-wrap {
+  margin-top: 20px;
+}
+.user-form-text {
+  text-align: left;
+  margin-bottom: 5px;
+}
+.user-form {
+  width: 100%;
+  height: 50px;
+  border: 1px gray solid;
+  box-shadow: 3px 3px 3px gray;
+  border-radius: 3px;
+  padding-left: 8px ;
+}
+.user-form-btn {
+  width: 100%;
+  height: 50px;
+  border: 1px gray solid;
+  box-shadow: 3px 3px 3px gray;
+  border-radius: 3px;
+  margin-top: 50px;
+  color: #7f7e7d;
+  background-color: lightgray;
+}
+.address-show-field{
+  height: 50px;
+ display: flex;
+ justify-content: space-between;
+ border-bottom: 1px black solid;
+}
+.address-btn-field{
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+
+.user-address-regist-btn{
+  width: 50px;
+  border: 1px black solid;
+  background-color: lightgray;
+  text-align: center;
+  border-radius: 3px;
+}
+.user-address-regist-btn a{
+  color: black;
+}
+.address-show {
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+.lightgray {
+  color: lightgray
 }

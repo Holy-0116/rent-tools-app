@@ -3,60 +3,24 @@
 </div>
 
 <div class="wrapper">
-  <div class="user-show-form-container">
-    <div class="user-show-info-field">
+  
+  <div class="user-show-container">
+    <%# サイドバー %>
+    <%= render "users/shared/user_side.html.erb"%>
 
-      <div class="user-show-name-field">
-        <div class="user-show-name">
-          <%= @user.name %>
+    <%# メインフィールド %>
+    <div class="user-info-field">
+        <div class="user-back-image">
+            <div class="user-show-name">
+              <%= @user.name %>
+            </div>            
         </div>
-        <div class="mypage-show-btn">
-        <%= link_to "編集",  edit_user_path(current_user)%>
+
+        <div class="user-info-title">
+          お知らせ
         </div>
-      </div>
-      <div class="user-show-info-fields">
-        <%= form_with  url: edit_user_path(current_user), local: true do |f| %>
-          <div class="user-show-info-field">
-            <div class="user-show-info-title">
-              Eメール
-            </div>
-            <div class="user-show-info">
-              <%= @user.email %>
-            </div>
-          </div>
-
-          
-          <div class="user-show-info-field">
-            <div class="user-show-info-title">
-              会社名
-            </div>
-            <div class="user-show-info">
-              <%= @user.company_name%>
-            </div>
-          </div>
-
-          <div class="user-show-info-field">
-            <div class="user-show-info-title">
-              住所
-            </div>
-            <div class="user-show-info">
-              <% if current_user.address %>
-              <%= current_user.address.postal_code%>
-              <%= current_user.address.prefecture.name%>
-              <%= current_user.address.city_name%>
-              <%= current_user.address.house_number%>
-              <%= current_user.address.building_name%>
-              <%= current_user.address.phone_number%>
-            <% else %>
-              未登録
-              <%= link_to "登録" , new_user_address_path(current_user),method: :get, local: true, class: "user-show-regist-btn" %>
-            <% end %>
-            </div>
-          </div>
-          
-        <% end %>
-      </div>
-
+        <div class="user-info">現在お知らせはありません</div>
+        
     </div>
   </div>
 </div>

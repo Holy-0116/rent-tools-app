@@ -1,0 +1,18 @@
+<%# サイドバー %>
+    <div class="user-show-sidebar">
+      <div class="user-info-content">
+        <%=link_to "お知らせ", user_path %>
+      </div>
+      <div class="user-info-content">
+        <%=link_to "本人情報", edit_user_path %>
+      </div>
+      <div class="user-info-content">
+        <a href="#">お気に入り</a>
+      </div>
+      <div class="user-info-content">
+        <a href="#">レンタル履歴</a>
+      </div>
+      <div class="user-info-content">
+        <%=link_to "住所登録・変更", new_user_address_path(current_user) %>
+      </div>
+    </div>

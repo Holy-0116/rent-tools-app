@@ -7,7 +7,6 @@ require "pry"
   end
 
   def create
-    binding.pry
     @user = User.find_by(id: current_user.id)
     @address = Address.new(address_params)
     if @address.valid?
