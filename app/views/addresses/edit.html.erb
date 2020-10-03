@@ -2,11 +2,11 @@
   <div class="address-form-container">
       <div class="address-title-wrap">
         <%= link_to (image_tag src="logo-image.png", class: "logo-image" ),root_path %>
-        <div class="address-form-title">住所登録</div>
+        <div class="address-form-title">住所変更</div>
       </div>
 
       <div  class="address-form-wraps">
-        <%= form_with model: @address, url: user_addresses_path(current_user), local: true do |f| %>
+        <%= form_with model: @address, url: user_address_path(current_user), local: true do |f| %>
 
           <div class="address-form-wrap">
             <div class="address-form-text">
@@ -49,7 +49,7 @@
           </div>
 
           <div class="form-submit">
-            <%= f.submit "登録する", class: "address-form-btn"%>
+            <%= f.submit "変更する", class: "address-form-btn"%>
           </div>
         <% end %>
       </div>
