@@ -1,0 +1,30 @@
+/* user-fo-rm-wrapより外側はusers/edit.css参照 */
+.card-form-title {
+  text-align: center;
+  font-size: 30px;
+  height: 50px;
+}
+.card-brand-image {
+  display: flex;
+  justify-content: space-evenly;
+  height: 35px;
+  margin-bottom: 20px;
+}
+.card-logo {
+  width: 50px;
+}
+
+.card-form-wrap {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px #ccc solid;
+}
+.card-form-text {
+  width: 150px;
+}
+.card-form {
+  text-align: center;
+  border: none;
+  outline: none;
+}
