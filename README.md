@@ -15,7 +15,7 @@
 - has_many :comments
 - has_many :items
 
-## Buyer_infoテーブル
+## Cardテーブル
 
 | Column         | Type     | Options     |
 | -------------- | -------- | ----------- |

@@ -1,10 +1,10 @@
 <%# サイドバー %>
     <div class="user-show-sidebar">
       <div class="user-info-content">
-        <%=link_to "お知らせ", user_path %>
+        <%=link_to "お知らせ", user_path(current_user) %>
       </div>
       <div class="user-info-content">
-        <%=link_to "本人情報", edit_user_path %>
+        <%=link_to "本人情報", edit_user_path(current_user) %>
       </div>
       <div class="user-info-content">
         <a href="#">お気に入り</a>
@@ -18,5 +18,8 @@
         <% else %>
           <%=link_to "住所登録", new_user_address_path(current_user) %>
         <% end %>
+      </div>
+      <div class="user-info-content">
+        <%=link_to "カード登録", new_user_card_path(current_user) %>
       </div>
     </div>
