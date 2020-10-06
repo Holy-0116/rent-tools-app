@@ -54,6 +54,11 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery fee select!")
       end
+      it "商品の在庫がいないと出品できない" do
+        @item.stock = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Stock can't be blank", "Stock is not a number")
+      end
       it "商品の金額がないと出品できない" do
         @item.price = nil
         @item.valid?

@@ -4,10 +4,11 @@ FactoryBot.define do
     name             {"test"}
     explanation      {"testtest"}
     size             {"test"}
-    status_id        {"2"}
-    category_id      {"2"}
-    delivery_fee_id  {"2"}
-    delivery_date_id {"2"}
+    status_id        {2}
+    category_id      {2}
+    delivery_fee_id  {2}
+    delivery_date_id {2}
+    stock            {1}
     price            {"1000"}
   end
 end
