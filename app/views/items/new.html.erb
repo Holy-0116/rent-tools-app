@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="item-form-container"> 
     <div class="item-title-field">
-      <%= link_to (image_tag src="logo.jpg", class: "logo-image" ),root_path %>
+      <%= link_to (image_tag src="logo-image.png", class: "logo-image" ),root_path %>
       <h2 class="item-form-title">商品情報入力</h2>
     </div>
     <div class="item-form-wraps">
@@ -37,9 +37,9 @@
         <div class="form-half-wrap">
           <div class="item-form-text">
             <label>カテゴリー</label><span class="required">必須</span>
+          </div>  
+            <%= f.collection_select :category_id, Category.all, :id, :name, {},{class: "select-form"} %>
           </div>
-          <%= f.collection_select :category_id, Category.all, :id, :name, {},{class: "select-form"} %>
-        </div>
 
         <div class="form-half-wrap">
           <div class="item-form-text">
@@ -60,6 +60,13 @@
             <label>発送までの日数</label><span class="required">必須</span>
           </div>
           <%= f.collection_select :delivery_date_id, DeliveryDate.all, :id, :name, {},{class: "select-form"} %>
+        </div>
+
+        <div class="form-half-wrap">
+          <div class="item-form-text">
+            <label>在庫数</label><span class="required">必須</span>
+          </div>
+          <%= f.number_field :stock, placeholder: "半角数字 例）12", class: "item-form",style: "width:150px",min: 1 %>
         </div>
 
         <div class="form-half-wrap">
