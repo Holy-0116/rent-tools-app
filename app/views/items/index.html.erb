@@ -19,22 +19,21 @@
   </div>
   <div class="item-main-field">
     <div class="top-page-container">
-
       <%# 商品一覧 %>
       <h2 class="top-page-content-title">商品一覧</h2>
       <ul class= "index-items-field">
           <% @items.each do |item| %>
-            <%= link_to item_path(item) do %>
             <li class= "index-item-list">
-              <div class="index-item">
-                <div class="index-item-name"><%= item.name %></div>
-                <div class="index-item-image-field">
-                  <%=image_tag item.image,class:"item-image"  %>
-                </div>  
-                  <div class="item-price"><%= item.price %>円</div>
-              </div>
+              <%= link_to item_path(item) do %>
+                <div class="index-item">
+                  <div class="index-item-image-field">
+                    <%=image_tag item.image,class:"item-image"  %>
+                  </div>  
+                    <div class="item-stock"><%= item.stock %>個レンタル可能</div>
+                    <div class="item-price">1個あたり: ¥<%= item.price %></div>
+                </div>
+              <% end %>
             </li>
-            <% end %>
           <% end %>
       </ul>
     </div>

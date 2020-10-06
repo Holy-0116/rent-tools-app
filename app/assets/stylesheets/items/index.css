@@ -33,43 +33,43 @@ a {
 }
 .top-page-container{
   text-align: center;
-  padding: 80px;
   margin: auto;
-  width: 80%;
+  width: 1100px;
+  margin-top: 50px;
+  margin-bottom: 50px
 }
 /* タイトル */
 .top-page-content-title {
   font-size: 30px;
-  margin-bottom: 50px;
+  margin: 50px;
   border-bottom: 1px rgb(230,230,230) solid;
 }
 /* 商品のCSS */
 .index-items-field {
   display: flex;
-  width: 80%;
-  margin: 0 auto;
-  justify-content: space-around;
-}
-.index-item-list {
-  list-style: none;
-}
-.index-item {
-  width: 240px;
-  height: 300px;
-  text-align: center;
-  margin: 0 auto;
-  box-shadow: 3px 3px 3px lightslategray;
-  background-color: white;
-  border-radius: 3px;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
 }
 
 .index-items-field a {
   font-size: 20px;
   color: black;
 }
+.index-item-list {
+  list-style: none;
+  margin: calc((1100px - 880px) / 8);
+}
+.index-item {
+  width: 220px;
+  height: 300px;
+  text-align: center;
+  box-shadow: 3px 3px 3px lightslategray;
+  background-color: white;
+  border-radius: 3px;
+}
+
 .index-item-image-field{
-  width: 240px;
-  height: 240px;
+  height: 220px;
 }
 /* 共有 */
 .item-image {
@@ -78,7 +78,7 @@ a {
 }
 .footer-field{
   display: flex;
-  height: 300px;
+  height: 400px;
   background-color: rgb(245,245,245);
   justify-content: space-around;
   padding: 50px 50px ;
