@@ -1,11 +1,12 @@
 const card = () =>{
   Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
   const form = document.getElementById("customer_form");
+  
   form.addEventListener("submit",function(e){
     e.preventDefault();
     const formResult = document.getElementById("customer_form");
     const formData = new FormData(formResult);
-
+    
     const Card = {
       number: formData.get("number"),
       exp_month: formData.get("exp_month"),
@@ -30,5 +31,5 @@ const card = () =>{
   });
 };
 // クレジットカード入力ページなら実行
-if (document.URL.match("/cards/new")){
+if (document.URL.match("/card/new")){
 window.addEventListener('load', card)};
