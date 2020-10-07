@@ -14,7 +14,7 @@ class CardsController < ApplicationController
   def create
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     if params[:card_token] == nil
-      render :new
+      redirect_to new_user_card_path
       return
     end
     customer = Payjp::Customer.create(

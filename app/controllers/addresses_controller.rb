@@ -9,7 +9,7 @@ class AddressesController < ApplicationController
   end
 
   def create
-    @user = User.find_by(id: params[:id])
+    @user = User.find_by(id: params[:user_id])
     @address = Address.new(address_params)
     if @address.valid?
       @address.save
@@ -20,12 +20,12 @@ class AddressesController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(id: params[:id])
+    @user = User.find_by(id: params[:user_id])
     @address = @user.address
   end
 
   def update
-    @user = User.find_by(id: params[:id])
+    @user = User.find_by(id: params[:user_id])
     if @address = Address.update(address_params)
       redirect_to edit_user_path(@user)
     else
