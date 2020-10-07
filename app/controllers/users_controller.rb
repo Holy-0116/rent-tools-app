@@ -12,10 +12,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update(user_params)
-      redirect_to root_path
+    @user = User.find_by(id: params[:id])
+    if @user.update_without_password(user_params)
+      
+      redirect_to user_path(@user)
     else
-      @user = User.find_by(id: params[:id])
       render :show
     end
   end
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit( :email, :company_name)
+    params.require(:user).permit( :name, :email, :company_name)
   end
 
 
