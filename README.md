@@ -9,9 +9,8 @@
 | password       | string   | null: false |
 | campany_name   | string   |             |
 
-- has_one  :buyer_info
+- has_one  :card
 - has_one  :address
-- has_many :orders
 - has_many :comments
 - has_many :items
 
@@ -24,6 +23,7 @@
 | customer_token | string   | null: false |
 
 - belongs_to :user
+- belongs_to :item
 
 ## Addressテーブル
 
@@ -53,10 +53,12 @@
 | delivery_date_id  | string   | null: false |
 | price             | string   | null: false |
 | stock             | string   | null: false |
+
 - belongs_to :user
-- belongs_to :order
-- has_many :tags ,through :tag_items
-- has_many :comments
+- has_many   :orders
+- has_many
+- has_many   :tags ,through :tag_items
+- has_many   :comments
 
 ## Tagテーブル
 
@@ -106,7 +108,7 @@
 ---
 # アプリケーション説明
 
-## アプリケーション名
+ アプリケーション名
 
 ### RENT-Tools
 
