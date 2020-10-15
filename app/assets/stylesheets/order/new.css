@@ -1,0 +1,114 @@
+/* aタグ共有 */
+a {
+  text-decoration: none;
+}
+/* ヘッダー共有ブロック */
+.header {
+  position: fixed;
+  top: 0px;
+  width: 100vw;
+  border-bottom: 1px rgba(0, 0, 0, 0.253) solid;
+  background-color:#ffffff;
+}
+/* 背景 */
+.wrapper{
+  height: 100vh;
+  padding-top: 90px;
+  background-color: #fffafafa;
+  overflow: hidden;
+  overflow: scroll;
+}
+.order-form-container {
+  background-color: white;
+  width: 600px;
+  box-shadow: 3px 3px 3px gray;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 50px 10px 50px 10px; 
+}
+
+.order-item-wraps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  width: 350px;
+  height: 150px;
+  border-bottom: 1px #ccc solid;
+  padding: 10px 20px;
+}
+.order-item-image {
+  height: 100px;
+  width: 100px;
+}
+
+.order-item-name {
+ font-size: 19px;
+ margin-bottom: 10px;
+}
+
+.order-detail-bottom {
+  text-align: right;
+}
+.order-user-wraps {
+  margin: auto;
+  width: 350px;
+  height: 150px;
+  border-bottom: 1px #ccc solid;
+  padding: 10px 20px;
+}
+.order-user-info {
+  padding: 10px 10px;
+}
+
+.order-form-wraps {
+  margin: auto;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+}
+.item-form-text {
+  text-align: left;
+  margin-bottom: 5px;
+}
+/* 選択ボタン用共有 */
+.form-half-wrap {
+  margin-top: 20px;
+  text-align: right;
+}
+.order-date-form {
+  width: 100%; 
+  height: 50px;
+  border: 1px gray solid;
+  box-shadow: 3px 3px 3px gray;
+  border-radius: 3px;
+  padding-left: 8px ;
+  background-color: #ffffff;
+}
+.order-period-form {
+  width: 50px;
+  height: 40px;
+  border: none;
+  border-bottom: 1px black solid;
+  text-align: right;
+}
+.order-price-form {
+  margin-left: auto;
+  width: 200px;
+  border-bottom: 1px black solid;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+}
+.order-form-btn {
+  width: 100%; 
+  height: 50px;
+  border: 1px gray solid;
+  box-shadow: 3px 3px 3px gray;
+  border-radius: 3px;
+  margin-top: 50px;
+  color: #7f7e7d;
+  background-color: lightgray;
+}

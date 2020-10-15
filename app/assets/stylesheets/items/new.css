@@ -27,6 +27,7 @@ a {
   margin-bottom: 50px;
   padding: 50px 10px 50px 10px; 
 }
+
 .item-title-field{
   text-align: center;
 }
@@ -54,6 +55,7 @@ a {
   border-radius: 3px;
   padding-left: 8px ;
 }
+
 .item-explanation-form {
   width: 100%; 
   border: 1px gray solid;
@@ -71,13 +73,8 @@ a {
   margin-top: 20px;
   text-align: right;
 }
-.item-price-form {
-  width: 200px;
-  height: 40px;
-  border: none;
-  border-bottom: 1px black solid;
-  text-align: right;
-}
+
+
 /* 必須マーク共有 */
 .required {
   background-color: red;
