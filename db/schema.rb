@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_06_001438) do
+ActiveRecord::Schema.define(version: 2020_10_08_140102) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -71,6 +71,22 @@ ActiveRecord::Schema.define(version: 2020_10_06_001438) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
+  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "borrower_id", null: false
+    t.bigint "lender_id", null: false
+    t.bigint "item_id"
+    t.integer "piece", null: false
+    t.date "start_date", null: false
+    t.date "return_date", null: false
+    t.integer "period", null: false
+    t.integer "price", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["borrower_id"], name: "index_orders_on_borrower_id"
+    t.index ["item_id"], name: "index_orders_on_item_id"
+    t.index ["lender_id"], name: "index_orders_on_lender_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "company_name"
@@ -89,4 +105,7 @@ ActiveRecord::Schema.define(version: 2020_10_06_001438) do
   add_foreign_key "addresses", "users"
   add_foreign_key "cards", "users"
   add_foreign_key "items", "users"
+  add_foreign_key "orders", "items"
+  add_foreign_key "orders", "users", column: "borrower_id"
+  add_foreign_key "orders", "users", column: "lender_id"
 end

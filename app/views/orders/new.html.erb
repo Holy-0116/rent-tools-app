@@ -1,0 +1,88 @@
+<div class="header">
+  <%= render "shared/header.html.erb" %>
+</div>
+
+<div class="wrapper">
+  <div class="order-form-container"> 
+    <div class="item-title-field">
+      <%= link_to (image_tag src="logo-image.png", class: "logo-image" ),root_path %>
+      <h2 class="item-form-title">レンタル申込フォーム</h2>
+    </div>
+    <%# ここにあとで@itemの情報表示 %>
+      <div class="order-item-wraps"> 
+        <div class="order-item-image">
+          <%= image_tag @item.image, class:"item-image"%>
+        </div>
+        <div class="order-item-detail">
+          <div class="order-item-name"><%= @item.name %></div>
+          <div class="order-detail-bottom">
+            <label class="order-price-title">レンタル価格（日額）</label><br>
+            <span class="order-item-price" id="item_price", data-item= <%= @item.price %>> <%= "#{@item.price} 円" %></span>
+          </div>
+        </div>
+      </div>
+    <%# ここにあとで@userの情報表示 %>
+    <div class="order-user-wraps"> 
+      <div>配送先</div>
+      <div class="order-user-info">
+        <%= @user.address.postal_code %><br>
+        <%= @user.address.prefecture.name %>
+        <%= @user.address.city_name %>
+        <%= @user.address.house_number %>
+        <%= @user.address.building_name %><br>
+        <%= @user.name %>
+      </div>
+        
+    </div>
+
+    <div class="order-form-wraps">
+      <%= form_with model: @order, url: item_order_path, local: true do |f|%>
+
+        <div class="form-half-wrap">
+          <div class="item-form-text">
+            <%= f.label "レンタルする個数" %><span class="required">必須</span>
+          </div>
+          <%= f.number_field :piece, placeholder: "半角数字", class: "item-form event",style: "width:100px",min: 1 %>
+        </div>
+
+        <div class="form-half-wrap">
+          <div class="item-form-text">
+            <%= f.label "レンタル開始日" %><span class="required">必須</span>
+          </div>
+          <%= f.date_field :start_date, class:"order-date-form event",style: "width:200px" %>
+        </div>
+
+        <div class="form-half-wrap">
+          <div class="item-form-text">
+            <%= f.label "返却日" %><span class="required">必須</span>
+          </div>
+          <%= f.date_field :return_date ,class:"order-date-form event",style: "width:200px",id: "return_date" %>
+        </div>
+
+        <div class="form-half-wrap">
+          <div class="item-form-text">
+            <%= f.label "レンタル期間" %><span class="required">必須</span>
+          </div>
+          <%= f.number_field :period, class:"order-period-form", style: "width:50px",min: 1 %><span> 日間</span>
+        </div>
+
+        <div class="form-half-wrap">
+          <div class="item-form-text">
+            <%= f.label "料金" %>
+          </div>
+          <div class="order-price-form">
+            <div id="order_price"></div><span>円</span>
+            <%= f.hidden_field :price, class: "item-price-form",style: "width:150px",min: 1 , id: "order_price_input" %>
+          </div>  
+        </div>
+
+        <div class="item-form-wrap">
+          <%= f.submit "レンタルする", class: "order-form-btn"%>
+        </div>
+
+      <% end %>
+    </div>
+
+  </div>
+
+</div>

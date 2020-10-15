@@ -16,7 +16,7 @@ class Item < ApplicationRecord
     validates :status_id,numericality:{ other_than: 0, message:"select!"}
     validates :delivery_fee_id, numericality:{ other_than: 0, message:"select!"}
     validates :delivery_date_id, numericality:{ other_than: 0, message:"select!"}
-    validates :stock, numericality:{ only_integer: true }
+    validates :stock, numericality:{ greater_than_or_equal_to: 0 }
     validates :price, format:{with: /\A[0-9]+\z/, message: "invalid. Price is half-width number" },
                       numericality:{ only_integer: true }
     
