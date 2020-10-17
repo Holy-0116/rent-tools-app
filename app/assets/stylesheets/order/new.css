@@ -90,13 +90,11 @@ a {
 .order-period-form {
   width: 50px;
   height: 40px;
-  border: none;
-  border-bottom: 1px black solid;
-  text-align: right;
+  text-align: center;
 }
-.order-price-form {
+.order-result-form {
   margin-left: auto;
-  width: 200px;
+  width: 150px;
   border-bottom: 1px black solid;
   text-align: right;
   display: flex;
