@@ -16,7 +16,7 @@
         <div class="order-item-detail">
           <div class="order-item-name"><%= @item.name %></div>
           <div class="order-detail-bottom">
-            <label class="order-price-title">レンタル価格（日額）</label><br>
+            <label class="order-price-title">レンタル価格（週割）</label><br>
             <span class="order-item-price" id="item_price", data-item= <%= @item.price %>> <%= "#{@item.price} 円" %></span>
           </div>
         </div>
@@ -42,37 +42,40 @@
           <div class="item-form-text">
             <%= f.label "レンタルする個数" %><span class="required">必須</span>
           </div>
-          <%= f.number_field :piece, placeholder: "半角数字", class: "item-form event",style: "width:100px",min: 1 %>
+          <%= f.number_field :piece, placeholder: "半角数字", class: "item-form event",style: "width:100px",min: 1, max: @item.stock %>
         </div>
 
         <div class="form-half-wrap">
           <div class="item-form-text">
             <%= f.label "レンタル開始日" %><span class="required">必須</span>
           </div>
-          <%= f.date_field :start_date, class:"order-date-form event",style: "width:200px" %>
-        </div>
-
-        <div class="form-half-wrap">
-          <div class="item-form-text">
-            <%= f.label "返却日" %><span class="required">必須</span>
-          </div>
-          <%= f.date_field :return_date ,class:"order-date-form event",style: "width:200px",id: "return_date" %>
+          <%= f.date_field :start_date, class:"order-date-form event",style: "width:200px", prompt: "" %>
         </div>
 
         <div class="form-half-wrap">
           <div class="item-form-text">
             <%= f.label "レンタル期間" %><span class="required">必須</span>
           </div>
-          <%= f.number_field :period, class:"order-period-form", style: "width:50px",min: 1 %><span> 日間</span>
+          <%= f.number_field :period, class:"order-period-form event", style: "width:50px",min: 1 %><span> 週間</span>
+        </div>
+
+        <div class="form-half-wrap">
+          <div class="item-form-text">
+            <%= f.label "返却日" %>
+          </div>
+          <div class="order-result-form">
+            <div id="return_date"></div><br>
+            <%= f.hidden_field :return_date ,id: "return_date_input" %>
+          </div>
         </div>
 
         <div class="form-half-wrap">
           <div class="item-form-text">
             <%= f.label "料金" %>
           </div>
-          <div class="order-price-form">
+          <div class="order-result-form">
             <div id="order_price"></div><span>円</span>
-            <%= f.hidden_field :price, class: "item-price-form",style: "width:150px",min: 1 , id: "order_price_input" %>
+            <%= f.hidden_field :price, min: 1 , id: "order_price_input" %>
           </div>  
         </div>
 
