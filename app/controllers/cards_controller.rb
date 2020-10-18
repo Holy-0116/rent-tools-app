@@ -5,10 +5,17 @@ class CardsController < ApplicationController
   end
 
   def show
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-    card = Card.find_by(user_id: current_user.id)
-     customer = Payjp::Customer.retrieve(card.customer_token)
-     @card = customer.cards.first
+    if current_user.card.present? 
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      cards = Card.where(user_id: current_user.id)
+      @cards = []
+      cards.each do |card|
+        customer = Payjp::Customer.retrieve(card.customer_token)
+        @cards << customer.cards
+      end
+    else
+      return
+    end
   end
 
   def create
@@ -26,7 +33,7 @@ class CardsController < ApplicationController
       card_token: params[:card_token],
       customer_token: customer.id)
     if card.save
-      redirect_to user_path(current_user)
+      redirect_to user_card_path(current_user)
     else
       render :new
     end
