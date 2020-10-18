@@ -14,8 +14,7 @@
     <div class="user-info-field">
       <div class="user-edit-form-container">
         <div class="user-form-wraps">
-
-          <%# クレジットカード入力フォーム %>
+          <%# タイトル %>
           <div class="card-form-title">カード情報</div>
           <div class="card-brand-image">
             <%= image_tag "card-amex.gif", class:"card-logo" %>
@@ -23,8 +22,9 @@
             <%= image_tag "card-mastercard.gif", class:"card-logo" %>
             <%= image_tag "card-visa.gif", class:"card-logo"%>
           </div>
-          <%= form_with  url: user_card_path, id: 'customer_form', local: true do |f| %>
 
+          <%# クレジットカード入力フォーム %>
+          <%= form_with  url: user_card_path, id: 'customer_form', local: true do |f| %>
             <div class="card-form-wrap">
                 <label class="card-form-text">カード番号</label>
                 <%= f.text_field :number, class: "card-form", maxlength: "16", placeholder: "1234567812345678",style: "width: 16em", autofocus: true %> 

@@ -14,8 +14,8 @@
     <div class="user-info-field">
       <div class="user-edit-form-container">
         <div class="user-form-wraps">
-
-          <%# クレジットカード入力フォーム %>
+          
+          <%# タイトル %>
           <div class="card-form-title">カード情報</div>
           <div class="card-brand-image">
             <%= image_tag "card-amex.gif", class:"card-logo" %>
@@ -23,17 +23,26 @@
             <%= image_tag "card-mastercard.gif", class:"card-logo" %>
             <%= image_tag "card-visa.gif", class:"card-logo"%>
           </div>
+          <% if current_user.card.present?%>
+            <%# クレジットカード情報 %>
+            <% @cards.each do |card| %>
+            <div class="card-info">
+              <div class="card-info-wrap">
+                  <label class="card-form-text">カード番号</label>
+                  <%= "**** **** **** #{ + card.data[0][:last4]}" %>
+              </div>
 
-            <div class="card-form-wrap">
-                <label class="card-form-text">カード番号</label>
-                <%= "**** **** **** #{ + @card[:last4]}" %>
+              <div class="card-info-wrap", style="width: 200px">
+                  <label class="card-form-text">有効期限</label>
+                  <%= "#{card.data[0][:exp_year]}年#{+ card.data[0][:exp_month]}月" %>
+              </div>
             </div>
+            <% end %>
+          <% end%>
 
-            <div class="card-form-wrap", style="width: 200px">
-                <label class="card-form-text">有効期限</label>
-                <%= "#{@card[:exp_year]}年#{+ @card[:exp_month]}月" %>
-            </div>
-
+          <div class="card-add-btn">
+            <%= link_to "＋クレジットカードを追加", new_user_card_path %>
+          </div>
             
 
           
