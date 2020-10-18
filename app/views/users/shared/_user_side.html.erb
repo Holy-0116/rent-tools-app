@@ -20,10 +20,6 @@
         <% end %>
       </div>
       <div class="user-info-content">
-      <% if current_user.card %>
-        <%=link_to "カード詳細", user_card_path(current_user) %>
-      <% else %>
-        <%=link_to "カード登録", new_user_card_path(current_user) %>
-      <% end %>
+        <%=link_to "お支払い方法", user_card_path(current_user) %>
       </div>
     </div>
