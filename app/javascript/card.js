@@ -1,3 +1,4 @@
+console.log("test")
 const card = () =>{
   Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
   const form = document.getElementById("customer_form");
