@@ -1,40 +1,29 @@
 class OrdersController < ApplicationController
   before_action :set_user
   before_action :set_item
+  before_action :set_api_key, only: [:select_card, :set_default_card, :create]
+  before_action :get_cards, only: [:select_card, :set_default_card]
 
   def select_card
     if current_user.card.present? 
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-      cards = Card.where(user_id: current_user.id)
-      @cards = []
-      cards.each do |card|
-        @customer = Payjp::Customer.retrieve(card.customer_token)
-        @cards << @customer.cards
-      end
+      get_cards
     else
       return
     end
   end
 
   def set_default_card
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-    cards = Card.where(user_id: current_user.id)
-    unless cards.present?
+    if current_user.card.present? 
+      get_cards
+    else
       render :select_card
       return
-    end
-    @cards = []
-    cards.each do |card|
-      @customer = Payjp::Customer.retrieve(card.customer_token)
-      @cards << @customer.cards
     end
     
     index = params[:selected].to_i
     @customer[:default_card] = @cards[0].data[index][:id]
     @customer.save
     redirect_to new_item_order_path
-    
-    
   end
 
   def new
@@ -74,6 +63,19 @@ class OrdersController < ApplicationController
     
     params.require(:order).permit(:piece, :start_date, :return_date, :period, :price)
     .merge(item_id:params[:item_id],borrower_id: current_user.id, lender_id: Item.find_by(id:params[:item_id]).user_id)
+  end
+
+  def set_api_key
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+  end
+
+  def get_cards
+    cards = Card.where(user_id: current_user.id)
+      @cards = []
+      cards.each do |card|
+        @customer = Payjp::Customer.retrieve(card.customer_token)
+        @cards << @customer.cards
+      end
   end
 
   def charge_create

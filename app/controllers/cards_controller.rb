@@ -1,12 +1,12 @@
 class CardsController < ApplicationController
   before_action :card_params, only: [:create]
+  before_action :set_api_key, only: [:show :create]
   
   def new
   end
 
   def show
     if current_user.card.present? 
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       cards = Card.where(user_id: current_user.id)
       @cards = []
       cards.each do |card|
@@ -21,7 +21,6 @@ class CardsController < ApplicationController
 
   def create
     # card_tokenが正しいか確認
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     if params[:card_token] == nil
       redirect_to new_user_card_path
       return
@@ -52,6 +51,10 @@ class CardsController < ApplicationController
   end
 
     private
+
+    def set_api_key
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    end
 
     def card_params
       params.permit(:card_token, :user_id)
