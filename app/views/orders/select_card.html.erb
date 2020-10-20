@@ -1,0 +1,50 @@
+<div class="header">
+  <%= render "shared/header.html.erb" %>
+</div>
+
+<div class="wrapper">
+  <div class="order-form-container"> 
+    <div class="item-title-field">
+      <h2 class="item-form-title">支払い方法選択</h2>
+    </div>
+    <div class="order-form-wraps"> 
+      <%# タイトル %>
+      <%# <div class="card-form-title">支払い方法</div> %>
+      <div class="card-brand-image">
+        <%= image_tag "card-amex.gif", class:"card-logo" %>
+        <%= image_tag "card-jcb.gif", class:"card-logo" %>
+        <%= image_tag "card-mastercard.gif", class:"card-logo" %>
+        <%= image_tag "card-visa.gif", class:"card-logo"%>
+      </div>
+      <%= form_with url: set_default_card_item_order_path(@item), method: :post, local: true do |f| %>
+        <% if current_user.card.present? %>
+          <%# クレジットカード情報 %>
+            <% @cards.each_with_index do |card, i| %>
+              <div class="card">
+                <div class="radio-field">
+                  <%=f.radio_button :selected, :"#{i}" ,id: "check_card", checked: (card.data[i][:id] == @customer[:default_card])  %>
+                </div>
+                <div class="order-card-info">
+                  <div class="card-info-wrap">
+                      <label class="card-form-text">カード番号</label>
+                      <%= "**** **** **** #{ + card.data[i][:last4]}" %>
+                  </div>
+                  <div class="card-info-wrap", style="width: 200px">
+                      <label class="card-form-text">有効期限</label>
+                      <%= "#{card.data[i][:exp_year]}年#{+ card.data[i][:exp_month]}月" %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+        <% end %>
+        <div class="card-add-btn">
+          <%= link_to "＋クレジットカードを追加", new_user_card_path(@user.id) %>
+        </div>
+
+        <div class="order-next">
+          <%= f.submit "次へ進む", class:"order-next-btn" %>
+        </div>
+      <% end %> 
+    </div>
+  </div>
+</div>
