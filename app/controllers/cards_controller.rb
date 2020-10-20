@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   before_action :card_params, only: [:create]
-  before_action :set_api_key, only: [:show :create]
+  before_action :set_api_key, only: [:show, :create]
   
   def new
   end
