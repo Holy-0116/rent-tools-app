@@ -1,30 +1,8 @@
 class OrdersController < ApplicationController
   before_action :set_user
   before_action :set_item
-  before_action :set_api_key, only: [:select_card, :set_default_card, :create]
+  before_action :set_api_key, only: [:select_card, :set_default_card, :create_card, :create]
   before_action :get_cards, only: [:select_card, :set_default_card]
-
-  def select_card
-    if current_user.card.present? 
-      get_cards
-    else
-      return
-    end
-  end
-
-  def set_default_card
-    if current_user.card.present? 
-      get_cards
-    else
-      render :select_card
-      return
-    end
-    
-    index = params[:selected].to_i
-    @customer[:default_card] = @cards[0].data[index][:id]
-    @customer.save
-    redirect_to new_item_order_path
-  end
 
   def new
     @order = Order.new
@@ -51,6 +29,64 @@ class OrdersController < ApplicationController
       else
         redirect_to new_item_order_path
       end
+  end
+
+  def new_card
+  end
+
+  def create_card
+     # card_tokenが正しいか確認
+     if params[:card_token] == nil
+      redirect_to select_card_item_order_path(@item)
+      return
+    end
+    # ユーザーのcustomer_tokenが存在する場合
+    if Card.find_by(user_id: current_user.id)
+      card = current_user.card
+      customer = Payjp::Customer.retrieve(card[0][:customer_token])
+      customer.cards.create(
+        card: params[:card_token]
+      )
+    else
+    # ユーザーがcustomer_tokenが存在していない場合 
+      customer = Payjp::Customer.create(
+        description: "test",
+        card: params[:card_token],)
+    end
+    # cardテーブルに保存
+    card = Card.new(
+      user_id: current_user.id,
+      card_token: params[:card_token],
+      customer_token: customer.id)
+    if card.save
+      redirect_to select_card_item_order_path(@item)
+    else
+      render select_card_item_order_path(@item)
+    end
+    
+  end
+  
+
+  def select_card
+    if current_user.card.present? 
+      get_cards
+    else
+      return
+    end
+  end
+
+  def set_default_card
+    if current_user.card.present? 
+      get_cards
+    else
+      render :select_card
+      return
+    end
+    
+    index = params[:selected].to_i
+    @customer[:default_card] = @cards[0].data[index][:id]
+    @customer.save
+    redirect_to new_item_order_path
   end
 
   def new_address
@@ -95,13 +131,16 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    
     params.require(:order).permit(:piece, :start_date, :return_date, :period, :price)
     .merge(item_id:params[:item_id],borrower_id: current_user.id, lender_id: Item.find_by(id:params[:item_id]).user_id)
   end
 
   def set_api_key
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+  end
+
+  def card_params
+    params.permit(:card_token, :user_id)
   end
 
   def get_cards

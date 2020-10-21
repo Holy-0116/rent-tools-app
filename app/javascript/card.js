@@ -31,5 +31,5 @@ const card = () =>{
   });
 };
 // クレジットカード入力ページなら実行
-if (document.URL.match("/card/new")){
+if (document.URL.match("/card/new") || document.URL.match("/order/new_card")) {
 window.addEventListener('load', card)};
