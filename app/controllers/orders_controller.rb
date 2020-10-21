@@ -31,6 +31,10 @@ class OrdersController < ApplicationController
   end
 
   def create
+    if current_user.address == nil
+      render :new
+      return
+    end
     if params[:order][:price] != nil && params[:order][:price] != ""
       charge_create
     else
@@ -49,8 +53,39 @@ class OrdersController < ApplicationController
       end
   end
 
+  def new_address
+    @address = Address.new
+  end
+
+  def set_address
+    @item = Item.find_by(id: params[:item_id])
+    @user = User.find_by(id: params[:user_id])
+    @address = Address.new(address_params)
+    if @address.valid?
+      @address.save
+      redirect_to new_item_order_path(@item)
+    else
+      render :new
+    end
+  end
+
+  def edit_address
+    @address = Address.find_by(user_id: current_user.id)
+  end
+
+  def update_address
+    @item = Item.find_by(id: params[:item_id])
+    @user = User.find_by(id: current_user.id)
+    if @user.address.update(address_params)
+      redirect_to new_item_order_path(@item)
+    else
+      render :new
+    end
+  end
+
 
   private
+  
   def set_user
     @user = User.find_by(id: current_user.id)
   end
@@ -86,5 +121,9 @@ class OrdersController < ApplicationController
         :amount => params[:order][:price],
         :customer => customer.id,
         :currency => 'jpy')         
+  end
+
+  def address_params
+    params.require(:address).permit(:postal_code, :prefecture_id, :city_name, :house_number, :building_name, :phone_number).merge(user_id: current_user.id)
   end
 end
