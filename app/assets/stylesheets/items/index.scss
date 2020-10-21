@@ -36,7 +36,7 @@ a {
 .top-page-container{
   text-align: center;
   margin: auto;
-  width: 1100px;
+  width: 100vw;
   margin-top: 50px;
   margin-bottom: 50px
 }
@@ -48,9 +48,11 @@ a {
 }
 /* 商品のCSS */
 .index-items-field {
+  width: 100%;
+  padding: 0px 150px;
   display: flex;
+  margin: auto;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
 }
 
 .index-items-field a {
@@ -59,7 +61,7 @@ a {
 }
 .index-item-list {
   list-style: none;
-  margin: calc((1100px - 880px) / 8);
+  margin: 10px calc((1140px - 880px) / 8);
 }
 .index-item {
   width: 220px;
@@ -79,6 +81,7 @@ a {
   height: 100%;
 }
 .footer-field{
+  width: 100vw;
   display: flex;
   height: 400px;
   background-color: rgb(245,245,245);
@@ -103,7 +106,7 @@ a {
   border-radius: 5px;
   position: fixed;
   bottom: 30px;
-  right: 20px
+  right: 20px;
 }
 .item-btn-image {
   width: 60%;
