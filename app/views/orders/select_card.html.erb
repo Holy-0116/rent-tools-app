@@ -38,9 +38,9 @@
             <% end %>
         <% end %>
         <div class="card-add-btn">
-          <%= link_to "＋クレジットカードを追加", new_user_card_path(@user.id) %>
+          <%= link_to "＋クレジットカードを追加", new_card_item_order_path(@item.id) %>
         </div>
-
+        
         <div class="order-next">
           <%= f.submit "次へ進む", class:"order-next-btn" %>
         </div>
