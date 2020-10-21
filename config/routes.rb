@@ -7,7 +7,12 @@ Rails.application.routes.draw do
       collection do
         get :select_card
         post :set_default_card
+        get :new_address
+        post :set_address
+        get :edit_address
+        patch :update_address
       end
+      
     end
   end
   resources :users, only: [:edit, :show, :update] do
