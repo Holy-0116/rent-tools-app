@@ -11,6 +11,8 @@ Rails.application.routes.draw do
         post :set_address
         get :edit_address
         patch :update_address
+        get :new_card
+        post :create_card
       end
       
     end
