@@ -1,0 +1,58 @@
+<%# address#newと同じCSS %>
+<div class="wrapper">
+  <div class="address-form-container">
+      <div class="address-title-wrap">
+        <%= link_to (image_tag src="logo-image.png", class: "logo-image" ),root_path %>
+        <div class="address-form-title">住所登録</div>
+      </div>
+
+      <div  class="address-form-wraps">
+        <%= form_with model: @address, url: update_address_item_order_path(@item), local: true do |f| %>
+
+          <div class="address-form-wrap">
+            <div class="address-form-text">
+              <label>郵便番号(半角数字・ハイフンなし)</label><span class="required">必須</span>
+              <%= f.text_field :postal_code, class: "address-form" %>
+
+          <div class="form-half-wrap">
+            <div class="address-form-text">
+              <label>都道府県</label><span class="required">必須</span>
+            </div>
+              <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name,{},{class: "select-form"} %>
+          </div>
+
+          <div class="address-form-wrap">
+            <div class="address-form-text">
+              <label>市区町村</label><span class="required">必須</span>
+            </div>
+              <%= f.text_field :city_name, class: "address-form" %>
+          </div>
+
+          <div class="address-form-wrap">
+            <div class="address-form-text">
+              <label>番地</label><span class="required">必須</span>
+            </div>
+              <%= f.text_field :house_number, class: "address-form" %>
+          </div>
+
+          <div class="address-form-wrap">
+            <div class="address-form-text">
+              <label>建物名</label><span class="required">必須</span>
+            </div>
+              <%= f.text_field :building_name, class: "address-form" %>
+          </div>
+
+          <div class="address-form-wrap">
+            <div class="address-form-text">
+              <label>電話番号(半角数字・ハイフンなし)</label><span class="required">必須</span>
+            </div>
+              <%= f.text_field :phone_number, class: "address-form" %>
+          </div>
+
+          <div class="form-submit">
+            <%= f.submit "この配送先を使う", class: "address-form-btn"%>
+          </div>
+        <% end %>
+      </div>
+  </div>
+</div>

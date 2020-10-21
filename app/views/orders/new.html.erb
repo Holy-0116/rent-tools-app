@@ -21,17 +21,27 @@
           </div>
         </div>
       </div>
-    <%# ここにあとで@userの情報表示 %>
+    <%# @userの情報表示 %>
     <div class="order-user-wraps"> 
       <div>配送先</div>
-      <div class="order-user-info">
-        <%= @user.address.postal_code %><br>
-        <%= @user.address.prefecture.name %>
-        <%= @user.address.city_name %>
-        <%= @user.address.house_number %><br>
-        <%= @user.address.building_name %><br>
-      </div>
-        
+      <% if @user.address %>
+        <div class="order-user-info">
+          <%= @user.address.postal_code %><br>
+          <%= @user.address.prefecture.name %>
+          <%= @user.address.city_name %>
+          <%= @user.address.house_number %><br>
+          <%= @user.address.building_name %><br>
+        </div>
+        <div class="order-address-btn-field">
+          <div class="order-address-regist-btn">
+            <%= link_to " 変更", edit_address_item_order_path %>
+          </div> 
+        </div>
+      <% else %>
+        <div class="address-none">
+          <%= link_to "+ 配送先を登録", new_address_item_order_path ,style:"color:blue"%>
+        </div>
+      <% end %>
     </div>
 
     <div class="order-form-wraps">
