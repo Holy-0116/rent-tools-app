@@ -9,7 +9,7 @@
 | password       | string   | null: false |
 | campany_name   | string   |             |
 
-- has_one  :card
+- has_many  :cards
 - has_one  :address
 - has_many :comments
 - has_many :items
@@ -23,7 +23,6 @@
 | customer_token | string   | null: false |
 
 - belongs_to :user
-- belongs_to :item
 
 ## Addressテーブル
 
@@ -56,7 +55,6 @@
 
 - belongs_to :user
 - has_many   :orders
-- has_many
 - has_many   :tags ,through :tag_items
 - has_many   :comments
 
@@ -84,15 +82,18 @@
 
 | Column         | Type     | Options     |
 | -------------- | -------- | ----------- |
-| buyer_id       | integer  | references  |
-| seller_id      | integer  | references  |
+| borrower_id    | integer  | references  |
+| lender_id      | integer  | references  |
 | item_id        | integer  | references  |
 | piece          | integer  | null: false |
+| start_date     | date     | null: false |
+| return_date    | date     | null: false |
 | period         | date     | null: false |
 | price          | integer  | null: false |
 
 - belongs_to :item
-- belongs_to :user
+- belongs_to :borrower, class_name: "User", foreign_key: "borrower_id"
+- belongs_to :lender, class_name: "User", foreign_key: "lender_id"
 
 ## Commentテーブル
 
@@ -179,28 +180,28 @@
 ## データベース設計
 
 ## ローカルでの動作方法
- brew install rbenv ruby-build
- echo 'eval "$(rbenv init -)"' >> ~/.zshrc
- source ~/.zshrc
- brew install readline
- brew link readline --force
- RUBY_CONFIGURE_OPTS="--with-readline-dir=$(brew --prefix readline)"
- rbenv install 2.6.5
- rbenv global 2.6.5
- rbenv rehash
- brew install mysql@5.6
- mkdir ~/Library/LaunchAgents 
- ln -sfv /usr/local/opt/mysql\@5.6/*.plist ~/Library/LaunchAgents
- launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql\@5.6.plist
- echo 'export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"' >> ~/.zshrc
- source ~/.zshrc 
- gem install bundler
- gem install rails --version='6.0.0'
- rbenv rehash
- brew install nodejs
- brew install yarn
+ brew install rbenv ruby-build  
+ echo 'eval "$(rbenv init -)"' >> ~/.zshrc  
+ source ~/.zshrc  
+ brew install readline  
+ brew link readline --force  
+ RUBY_CONFIGURE_OPTS="--with-readline-dir=$(brew --prefix readline)"  
+ rbenv install 2.6.5  
+ rbenv global 2.6.5  
+ rbenv rehash  
+ brew install mysql@5.6  
+ mkdir ~/Library/LaunchAgents  
+ ln -sfv /usr/local/opt/mysql\@5.6/*.plist ~/Library/LaunchAgents  
+ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql\@5.6.plist  
+ echo 'export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"' >> ~/.zshrc  
+ source ~/.zshrc  
+ gem install bundler  
+ gem install rails --version='6.0.0'  
+ rbenv rehash  
+ brew install nodejs  
+ brew install yarn  
 
 
- ruby  v2.6.5
- rails v6.0.0
- Mysql v0.5.3
+ ruby  v2.6.5  
+ rails v6.0.0  
+ Mysql v0.5.3  
