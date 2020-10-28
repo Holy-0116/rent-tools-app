@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    binding.pry
     if current_user.address == nil
       render :new
       return
@@ -134,8 +135,8 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:piece, :start_date, :return_date, :period, :price)
-    .merge(item_id:params[:item_id],borrower_id: current_user.id, lender_id: Item.find_by(id:params[:item_id]).user_id)
+    params.require(:order).permit(:piece, :start_date, :period, :price)
+    .merge(item_id:params[:item_id],borrower_id: current_user.id)
   end
 
   def set_api_key

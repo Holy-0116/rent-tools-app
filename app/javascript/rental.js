@@ -23,7 +23,6 @@ const returnDate = () => {
       const returnDateForm = document.getElementById("return_date");
       const returnDateInput = document.getElementById("return_date_input");
       returnDateForm.innerHTML = returnDate;
-      returnDateInput.value = returnDate;
       price();
     };
   }));
