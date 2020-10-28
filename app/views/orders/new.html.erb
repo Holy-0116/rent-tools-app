@@ -58,7 +58,7 @@
           <div class="item-form-text">
             <%= f.label "レンタル開始日" %><span class="required">必須</span>
           </div>
-          <%= f.date_field :start_date, class:"order-date-form event",style: "width:200px", prompt: "" %>
+          <%= f.date_field :start_date, class:"order-date-form event",style: "width:200px", min: Date.current.tomorrow %>
         </div>
 
         <div class="form-half-wrap">
