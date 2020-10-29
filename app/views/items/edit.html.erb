@@ -6,6 +6,7 @@
     </div>
     <div class="item-form-wraps">
       <%= form_with model: @item, url:item_path(@item), local: true do |f|%>
+        <%= render 'shared/error_message', model: f.object %>
         <div class="item-form-wrap">
           <div class="item-form-text">
             <label>商品名</label><span class="required">必須</span>

@@ -5,12 +5,13 @@ class OrdersController < ApplicationController
   before_action :get_cards, only: [:select_card, :set_default_card]
 
   def new
-    
     @order = Order.new
+    @address = @user.address
   end
 
   def create
-    binding.pry
+    @order = Order.new(order_params)
+    @order.valid?
     if current_user.address == nil
       render :new
       return
@@ -18,21 +19,21 @@ class OrdersController < ApplicationController
     if params[:order][:price] != nil && params[:order][:price] != ""
       charge_create
     else
-      redirect_to new_item_order_path
+      render :new
       return
     end
     
-      @order = Order.new(order_params)
-      if @order.valid?
-        @order.save
-        stock = (@item.stock.to_i) - (order_params[:piece].to_i)
-        @item.update(stock: stock)
-        redirect_to root_path
-        OrderMailer.send_when_order_create(@order).deliver
+      
+    if @order.valid?
+      @order.save
+      stock = (@item.stock.to_i) - (order_params[:piece].to_i)
+      @item.update(stock: stock)
+      redirect_to root_path
+      OrderMailer.send_when_order_create(@order).deliver
 
-      else
-        redirect_to new_item_order_path
-      end
+    else
+      redirect_to new_item_order_path
+    end
   end
 
   def new_card

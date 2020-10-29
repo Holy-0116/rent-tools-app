@@ -46,7 +46,7 @@
 
     <div class="order-form-wraps">
       <%= form_with model: @order, url: item_order_path, local: true do |f|%>
-
+        <%= render 'shared/error_message', model: f.object %>
         <div class="form-half-wrap">
           <div class="item-form-text">
             <%= f.label "レンタルする個数" %><span class="required">必須</span>

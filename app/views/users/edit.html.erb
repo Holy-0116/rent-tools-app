@@ -14,7 +14,7 @@
       <div class="user-edit-form-container">
         <div class="user-form-wraps">
           <%= form_with model: current_user, url: user_path(current_user),  local: true do |f| %>
-
+            <%= render 'shared/error_message', model: f.object %>
             <div class="user-form-wrap">
               <div class="user-form-text">
                 <label >名前</label><span class="required">必須</span>
