@@ -6,6 +6,7 @@
     </div>
     <div class="user-form-wraps">
       <%= form_with model:@user, url: user_session_path, local: true do |f| %>
+        <%= render 'shared/error_message', model: f.object %>
         <div class="user-form-wrap">
           <div class="user-form-text">
             <label>Eメール</label>
