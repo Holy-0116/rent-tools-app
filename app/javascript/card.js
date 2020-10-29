@@ -1,7 +1,8 @@
 const card = () =>{
   Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
   const form = document.getElementById("customer_form");
-  
+  // formがなければイベント発火しないようにする記述
+  if (form){
   form.addEventListener("submit",function(e){
     e.preventDefault();
     const formResult = document.getElementById("customer_form");
@@ -28,8 +29,8 @@ const card = () =>{
       document.getElementById("customer_form").submit();
       document.getElementById("customer_form").reset();
     })
-  });
+  })};
 };
 // クレジットカード入力ページなら実行
-if (document.URL.match("/card/new") || document.URL.match("/order/new_card")) {
+if (document.URL.match("/card") || document.URL.match("/new_card")) {
 window.addEventListener('load', card)};

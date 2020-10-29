@@ -21,13 +21,13 @@ const returnDate = () => {
       
       // 返却日を表示
       const returnDateForm = document.getElementById("return_date");
-      const returnDateInput = document.getElementById("return_date_input");
+      // const returnDateInput = document.getElementById("return_date_input");
       returnDateForm.innerHTML = returnDate;
       price();
     };
   }));
 };
-// レンタル金額表示
+// レンタル金額表示関数
 const price = () => {
   const rentalPeriod = document.getElementById("order_period");
   const itemPriceForm = document.getElementById("item_price");
@@ -44,6 +44,8 @@ const price = () => {
 
 };
 
-if (document.URL.match("/order/new")){
+if (document.URL.match("/order")){
 window.addEventListener('load', returnDate)};
+
+
 
