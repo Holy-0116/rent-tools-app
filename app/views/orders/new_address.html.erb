@@ -8,7 +8,7 @@
 
       <div  class="address-form-wraps">
         <%= form_with model: @address, url: set_address_item_order_path(@item), local: true do |f| %>
-
+          <%= render 'shared/error_message', model: f.object %>
           <div class="address-form-wrap">
             <div class="address-form-text">
               <label>郵便番号(半角数字・ハイフンなし)</label><span class="required">必須</span>
@@ -37,7 +37,7 @@
 
           <div class="address-form-wrap">
             <div class="address-form-text">
-              <label>建物名</label><span class="required">必須</span>
+              <label>建物名</label>
             </div>
               <%= f.text_field :building_name, class: "address-form" %>
           </div>
