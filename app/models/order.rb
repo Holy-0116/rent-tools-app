@@ -3,11 +3,9 @@ class Order < ApplicationRecord
   belongs_to :item
 
   with_options presence: true do
-    validates :borrower_id
-    validates :item_id
-    validates :piece
-    validates :start_date  
-    validates :period      
+    validates :piece, numericality:{ greater_than: 0 }
+    validates :start_date, date: {after: Date.current, message: "can't select Past"}
+    validates :period, numericality:{ greater_than: 0 }      
     validates :price 
 
   end
