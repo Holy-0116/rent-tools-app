@@ -26,7 +26,8 @@ class AddressesController < ApplicationController
 
   def update
     @user = User.find_by(id: params[:user_id])
-    if @address = Address.update(address_params)
+    @address = @user.address
+    if @address.update(address_params)
       redirect_to edit_user_path(@user)
     else
       render :edit
