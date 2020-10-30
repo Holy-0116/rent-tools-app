@@ -20,6 +20,8 @@ const card = () =>{
         const renderDom = document.getElementById("customer_form");
         const tokenObj = `<input value= ${token} type="hidden" name= "card_token">`;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
+      } else {
+        alert('このカードはご利用になれません')
       }
       document.getElementById("number").removeAttribute("name");
       document.getElementById("exp_month").removeAttribute("name");
