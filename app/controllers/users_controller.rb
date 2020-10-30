@@ -14,10 +14,9 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(id: params[:id])
     if @user.update_without_password(user_params)
-      
       redirect_to user_path(@user)
     else
-      render :show
+      render :edit
     end
   end
 
