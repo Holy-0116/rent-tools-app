@@ -8,13 +8,12 @@
     <%# サイドバー %>
     <%= render "users/shared/user_side.html.erb"%>
       
-      
     <%# メインフィールド %>
     <div class="user-info-field">
       <div class="user-edit-form-container">
         <div class="user-form-wraps">
           <%= form_with model: current_user, url: user_path(current_user),  local: true do |f| %>
-            <%= render 'shared/error_message', model: f.object %>
+            <%= render 'shared/error_message', model: @user %>
             <div class="user-form-wrap">
               <div class="user-form-text">
                 <label >名前</label><span class="required">必須</span>
@@ -30,7 +29,6 @@
                 <%= f.text_field :email, class: "user-form" %>
             </div>
 
-            
 
             <div class="user-form-wrap">
               <div class="user-form-text">
