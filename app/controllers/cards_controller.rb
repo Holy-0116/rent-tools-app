@@ -22,7 +22,8 @@ class CardsController < ApplicationController
   def create
     # card_tokenが正しいか確認
     if params[:card_token] == nil
-      redirect_to new_user_card_path
+      flash.now[:alert] = "このカードはご利用になれません"
+      render :new
       return
     end
     # ユーザーのcustomer_tokenが存在する場合
@@ -45,7 +46,9 @@ class CardsController < ApplicationController
       customer_token: customer.id)
     if card.save
       redirect_to user_card_path(current_user)
+      flash[:notice] = "登録しました"
     else
+      flash.now[:alert] = "エラーが発生しました"
       render :new
     end
   end
