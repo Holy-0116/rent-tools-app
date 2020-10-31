@@ -14,6 +14,7 @@ class AddressesController < ApplicationController
     if @address.valid?
       @address.save
       redirect_to edit_user_path(@user)
+      flash[:notice] = "登録しました"
     else
       render :new
     end
@@ -29,6 +30,7 @@ class AddressesController < ApplicationController
     @address = @user.address
     if @address.update(address_params)
       redirect_to edit_user_path(@user)
+      flash[:notice] = "変更しました"
     else
       render :edit
     end
