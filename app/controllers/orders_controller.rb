@@ -42,7 +42,8 @@ class OrdersController < ApplicationController
   def create_card
      # card_tokenが正しいか確認
      if params[:card_token] == nil
-      redirect_to select_card_item_order_path(@item)
+      flash.now[:alert] = "このカードはご利用になれません"
+      render :new_card
       return
     end
     # ユーザーのcustomer_tokenが存在する場合
@@ -65,8 +66,11 @@ class OrdersController < ApplicationController
       customer_token: customer.id)
     if card.save
       redirect_to select_card_item_order_path(@item)
+      flash[:notice] = "登録しました"
     else
-      render select_card_item_order_path(@item)
+      flash.now[:alert] = "エラーが発生しました"
+      render :new_card
+      
     end
     
   end
@@ -99,28 +103,27 @@ class OrdersController < ApplicationController
   end
 
   def set_address
-    @item = Item.find_by(id: params[:item_id])
-    @user = User.find_by(id: params[:user_id])
     @address = Address.new(address_params)
     if @address.valid?
       @address.save
       redirect_to new_item_order_path(@item)
+      flash[:notice] = "登録しました"
     else
       render :new
     end
   end
 
   def edit_address
-    @address = Address.find_by(user_id: current_user.id)
+    @address = @user.address
   end
 
   def update_address
-    @item = Item.find_by(id: params[:item_id])
-    @user = User.find_by(id: current_user.id)
-    if @user.address.update(address_params)
+    @address = @user.address
+    if @address.update(address_params)
       redirect_to new_item_order_path(@item)
+      flash[:notice] = "変更しました"
     else
-      render :new
+      render :edit_address
     end
   end
 

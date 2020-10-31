@@ -19,6 +19,7 @@ class ItemsController < ApplicationController
     if @item.valid?
       @item.save
       redirect_to root_path
+      flash[:notice] = "登録しました"
     else
       render "new"
     end
@@ -28,9 +29,10 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.valid?
-      @item.update(item_params)
-      redirect_to root_path
+    binding.pry
+    if @item.update(item_params)
+      redirect_to item_path(@item)
+      flash[:notice] = "変更しました"
     else 
       render "edit"
     end
@@ -39,6 +41,7 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     redirect_to root_path
+    flash[:notice] = "削除しました"
   end
 
   private

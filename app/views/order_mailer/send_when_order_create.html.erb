@@ -7,7 +7,9 @@
     <h4><%= @lender.name %>様</h4>
       
     <p><%=@borrower.name %>様からレンタルの注文がありました。</p>
-
+    <p><%=@item.name %></p>
+    <p><%=@order.start_date %>着</p>
+    <p><%=@order.piece %>個</p>
     <p>下記よりご確認ください</p>
     <%= @url %>
   </body>

@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     if @user.update_without_password(user_params)
       redirect_to user_path(@user)
+      flash[:notice] = "変更しました"
     else
       render :edit
     end
