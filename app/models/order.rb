@@ -4,7 +4,7 @@ class Order < ApplicationRecord
 
   with_options presence: true do
     validates :piece, numericality:{ greater_than: 0 }
-    validates :start_date, date: {after: Date.current, message: " can't select Past"}
+    validates :start_date, date: {after: Date.current, message: "は過去の日付は選べません"}
     validates :period, numericality:{ greater_than: 0 }      
     validates :price 
 

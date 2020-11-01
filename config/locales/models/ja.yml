@@ -1,0 +1,28 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+      address:
+        postal_code: 郵便番号
+        prefecture_id: 都道府県
+        city_name: 市区町村
+        house_number: 番地
+        phone_number: 電話番号
+      item:
+        name: 商品名
+        image: 画像
+        explanation: 商品説明
+        size: サイズ
+        category_id: カテゴリー
+        status_id: 商品状態
+        delivery_fee_id: 配送費負担
+        delivery_date_id: 発送までの日数
+        stock: 在庫
+        price: 金額
+      order:
+        piece: 注文数
+        start_date: レンタル開始日
+        period: レンタル期間
+        price: レンタル費用
+  
