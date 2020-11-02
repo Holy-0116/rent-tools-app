@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   root 'items#index'
   resources :items do
+    collection do
+      get :search
+    end
     resource :order do
       collection do
         get :select_card
