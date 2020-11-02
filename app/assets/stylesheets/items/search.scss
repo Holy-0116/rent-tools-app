@@ -1,0 +1,83 @@
+.search-main-field {
+  margin: 100px 0px;
+  padding: 0px 200px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+// 詳細検索
+.search-side {
+  background-color: #ffffff;;
+  height: 500px;
+  width: 300px;
+  box-shadow: 3px 3px 3px gray;
+  padding: 15px;
+    h5 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    input {
+      display: inline-block;
+      width: 100%;
+      height: 50px;
+      margin-bottom: 20px;
+    }
+    .search-more-btn{
+      display: block;
+      width: 100px;
+      margin: auto;
+    }
+} 
+
+// 検索結果
+.search-result {
+  width: 700px;
+  height: 500px;
+  
+}
+
+.search-result-head {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.search-result-head-text {
+  font-size: 18px;
+  font-weight: 100
+}
+.search-item-num {
+  margin: 30px;
+  margin-left: 30px;
+  font-size: 15px;
+}
+.search-item-list{
+  list-style: none;
+  margin-right: calc((700px - 640px) / 4);
+  .search-item{
+    width: 160px;
+    height: 220px;
+    text-align: center;
+    box-shadow: 3px 3px 3px lightslategray;
+    background-color: white;
+    border-radius: 3px;
+    .search-item-image-field{
+      height: 160px;
+      .item-image{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .item-stock{
+    color: black;
+  }
+  .item-price{
+    color: black;
+  }
+}
+
+
+
+
+
