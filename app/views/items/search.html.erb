@@ -23,19 +23,21 @@
       <span class="search-result-head-text">の検索結果</span></h2>
       <p class="search-item-num"><%="#{@search_items.length}"%><span>件</span></p>
       <%# 検索結果のItem %>
-      <% @search_items.each do |item| %>
-        <li class= "search-item-list">
-          <%= link_to item_path(item) do %>
-            <div class="search-item">
-              <div class="search-item-image-field">
-                <%=image_tag item.image,class:"item-image"  %>
-              </div>  
-              <div class="item-stock"><%= item.stock %>個レンタル可能</div>
-              <div class="item-price">1個あたり: ¥<%= item.price %></div>
-            </div>
-          <% end %>
-        </li>
-      <% end %>
+      <ul class="search-items-field">
+        <% @search_items.each do |item| %>
+          <li class= "search-item-list">
+            <%= link_to item_path(item) do %>
+              <div class="search-item">
+                <div class="search-item-image-field">
+                  <%=image_tag item.image,class:"item-image"  %>
+                </div>  
+                <div class="item-stock"><%= item.stock %>個レンタル可能</div>
+                <div class="item-price">1個あたり: ¥<%= item.price %></div>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
     <%# フッター %>
