@@ -1,6 +1,7 @@
 .search-main-field {
   margin: 100px 0px;
   padding: 0px 200px; 
+  height: 1100px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -8,7 +9,6 @@
 // 詳細検索
 .search-side {
   background-color: #ffffff;;
-  height: 400px;
   width: 300px;
   box-shadow: 3px 3px 3px gray;
   padding: 15px;

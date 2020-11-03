@@ -80,35 +80,3 @@ a {
   width: 100%;
   height: 100%;
 }
-.footer-field{
-  width: 100vw;
-  display: flex;
-  height: 400px;
-  background-color: rgb(245,245,245);
-  justify-content: space-around;
-  padding: 50px 50px ;
-}
-.footer-title{
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-.footer-content a{
-  font-size: 15px;
-  color: black;
-}
-/* 出品ボタン */
-.new-item-btn {
-  width: 100px;
-  height: 100px;
-  background-color: silver;
-  text-align: center;
-  color: white;
-  border-radius: 5px;
-  position: fixed;
-  bottom: 30px;
-  right: 20px;
-}
-.item-btn-image {
-  width: 60%;
-  height: 60%;
-}
