@@ -11,8 +11,8 @@
         <a href="#">カテゴリーから探す</a>
       </div>
       <div class="search-field">
-        <%=form_with url: search_items_path, method: :get, local: true do |f|%>
-          <%= f.text_field  :search, class:"search-form",placeholder:"何かお探しですか？" %>
+        <%=search_form_for @p, url: search_keyword_path, method: :get, local: true do |f|%>
+          <%= f.text_field  :name_cont, class:"search-form",placeholder:"何かお探しですか？" %>
           <%= f.submit "検索" %> 
         <% end %>
       </div>
