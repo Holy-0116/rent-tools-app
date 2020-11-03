@@ -1,7 +1,8 @@
 function initPostcodeJp() {
   
   // APIキーを指定して住所補完サービスを作成
-  var postcodeJp = new postcodejp.address.AutoComplementService(process.env.POSTAL_CODE_JP_KEY);
+  const key = process.env.POSTAL_CODE_JP_KEY
+  var postcodeJp = new postcodejp.address.AutoComplementService(key);
   
   // 郵便番号テキストボックスを指定
   postcodeJp.setZipTextbox('address_postal_code')

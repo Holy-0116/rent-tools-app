@@ -44,6 +44,10 @@ class ItemsController < ApplicationController
     flash[:notice] = "削除しました"
   end
 
+  def search
+    @search_items = Item.search(params[:search])
+  end
+
   private
   def signed_in?
     unless current_user
