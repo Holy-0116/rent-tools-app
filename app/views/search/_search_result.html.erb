@@ -1,0 +1,54 @@
+<div class="header">
+  <%= render "shared/header.html.erb"%>
+</div>
+
+<div class="wrapper">
+  <div class="search-main-field">
+    <%# サイド %>
+    <div class="search-side">
+      <h5>詳細検索</h5>
+      <%# 詳細検索フォーム %>
+      <%= search_form_for @p,  url: search_sort_order_path, method: :get, local: true do |f|%>
+        <%= f.select :sorts, {'並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc'},
+          {selected: params[:q][:sorts]}, {onchange: 'this.form.submit()'} %>
+        <%= f.label :name, "キーワード追加"%>
+        <%= f.text_field :name_cont %>
+        <%= f.label :category_id_eq, "カテゴリー選択"%>
+        <%= f.collection_select :category_id_eq, Category.all, :id, :name  %>
+        <%= f.label :price_eq, "価格選択"%>
+        <%= f.text_field :price_eq %>
+        <%= f.submit "検索", class:"search-more-btn" %>
+      <%end%>
+    </div>
+    <%# 検索結果 %>
+    <div class="search-result">
+    <% if params[:q][:name_cont] != ""%>
+      <h2 class="search-result-head"><%="#{params[:q][:name_cont]}"%>
+      <span class="search-result-head-text">の検索結果</span></h2>
+    <% else%>
+      <h2 class="search-result-head">
+      <span class="search-result-head-text">検索結果</span>
+      </h2>
+    <% end %>
+      <p class="search-item-num"><%="#{@result.length}"%><span>件</span></p>
+      <%# 検索結果のItem %>
+      <ul class="search-items-field">
+        <% @result.each do |item| %>
+          <li class= "search-item-list">
+            <%= link_to item_path(item) do %>
+              <div class="search-item">
+                <div class="search-item-image-field">
+                  <%=image_tag item.image,class:"item-image"  %>
+                </div>  
+                <div class="item-stock"><%= item.stock %>個レンタル可能</div>
+                <div class="item-price">1個あたり: ¥<%= item.price %></div>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <%# フッター %>
+  <%= render 'shared/footer'%>
+</div>    
