@@ -9,20 +9,39 @@
       <h5>詳細検索</h5>
       <%# 詳細検索フォーム %>
       <%= search_form_for @p,  url: search_sort_order_path, method: :get, local: true do |f|%>
-        <%= f.select :sorts, {'並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc'},
+        <%= f.select :sorts, {'並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '在庫が多い順': 'stock desc'},
           {selected: params[:q][:sorts]}, {onchange: 'this.form.submit()'} %>
-        <%= f.label :name, "キーワード追加"%>
-        <%= f.text_field :name_cont %>
+        <%= f.label :name_or_explanation, "キーワード追加"%>
+        <%= f.text_field :name_or_explanation_cont %>
         <%= f.label :category_id_eq, "カテゴリー選択"%>
-        <%= f.collection_select :category_id_eq, Category.all, :id, :name  %>
-        <%= f.label :price_eq, "価格選択"%>
-        <%= f.text_field :price_eq %>
-        <%= f.submit "検索", class:"search-more-btn" %>
+        <%= f.collection_select :category_id_eq, Category.all, :id, :name, include_blank:"選択してください"  %>
+        <%= f.label :price_eq, "価格"%>
+        <%= f.text_field :price_gteq ,placeholder:"¥ MIN", class: "price"%><span> ~</span>
+        <%= f.text_field :price_lteq ,placeholder:"¥ MAX", class: "price"%>
+        <%= f.label :status_id_eq_any, "状態" %>
+        <%= f.collection_check_boxes(:status_id_eq_any, Status.all, :id, :name) do |b| %>
+          <div class="check-field">
+            <%= b.check_box  class:"check-box"%>
+            <%= b.label  text: b ,class:"check-box-text"%>
+          </div>
+        <% end%>
+        <%= f.label :status_id_eq_any, "配送費" %>
+        <%= f.collection_check_boxes(:delivery_fee_id_eq_any, DeliveryFee.all, :id, :name) do |b| %>
+          <div class="check-field">
+            <%= b.check_box  class:"check-box"%>
+            <%= b.label  text: b ,class:"check-box-text"%>
+          </div>
+        <% end%>
+        <div class="search-btn-field">
+          <%= f.submit "クリア", type: "reset", class: "search-more-btn clear" ,id: "reset" %>
+          <%= f.submit "検索", class:"search-more-btn submit" %>
+        </div>
       <%end%>
     </div>
+
     <%# 検索結果 %>
     <div class="search-result">
-    <% if params[:q][:name_cont] != ""%>
+    <% if params[:q][:name_or_explanation_cont] != ""%>
       <h2 class="search-result-head"><%="#{params[:q][:name_cont]}"%>
       <span class="search-result-head-text">の検索結果</span></h2>
     <% else%>
@@ -31,22 +50,27 @@
       </h2>
     <% end %>
       <p class="search-item-num"><%="#{@result.length}"%><span>件</span></p>
+      
       <%# 検索結果のItem %>
-      <ul class="search-items-field">
-        <% @result.each do |item| %>
-          <li class= "search-item-list">
-            <%= link_to item_path(item) do %>
-              <div class="search-item">
-                <div class="search-item-image-field">
-                  <%=image_tag item.image,class:"item-image"  %>
-                </div>  
-                <div class="item-stock"><%= item.stock %>個レンタル可能</div>
-                <div class="item-price">1個あたり: ¥<%= item.price %></div>
-              </div>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
+      <%if @result != [] %>
+        <ul class="search-items-field">
+          <% @result.each do |item| %>
+            <li class= "search-item-list">
+              <%= link_to item_path(item) do %>
+                <div class="search-item">
+                  <div class="search-item-image-field">
+                    <%=image_tag item.image,class:"item-image"  %>
+                  </div>  
+                  <div class="item-stock"><%= item.stock %>個レンタル可能</div>
+                  <div class="item-price">1個あたり: ¥<%= item.price %></div>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <%else%>
+        <p>該当する商品が見つかりません。検索条件を変えて、再度お試しください。</p>
+      <%end%>
     </div>
   </div>
   <%# フッター %>

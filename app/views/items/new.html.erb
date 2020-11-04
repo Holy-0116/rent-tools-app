@@ -39,28 +39,28 @@
           <div class="item-form-text">
             <label>カテゴリー</label><span class="required">必須</span>
           </div>  
-            <%= f.collection_select :category_id, Category.all, :id, :name, {},{class: "select-form"} %>
+            <%= f.collection_select :category_id, Category.all, :id, :name, {include_blank: "選択してください"}, {class: "select-form"} %>
           </div>
 
         <div class="form-half-wrap">
           <div class="item-form-text">
             <label>商品の状態</label><span class="required">必須</span>
           </div>
-          <%= f.collection_select :status_id, Status.all, :id, :name, {},{class: "select-form"} %>
+          <%= f.collection_select :status_id, Status.all, :id, :name, {include_blank: "選択してください"}, {class: "select-form"} %>
         </div>
 
         <div class="form-half-wrap">
           <div class="item-form-text">
             <label>配送料</label><span class="required">必須</span>
           </div>
-          <%= f.collection_select :delivery_fee_id, DeliveryFee.all, :id, :name, {},{class: "select-form"} %>
+          <%= f.collection_select :delivery_fee_id, DeliveryFee.all, :id, :name, {include_blank: "選択してください"}, {class: "select-form"} %>
         </div>
 
         <div class="form-half-wrap">
           <div class="item-form-text">
             <label>発送までの日数</label><span class="required">必須</span>
           </div>
-          <%= f.collection_select :delivery_date_id, DeliveryDate.all, :id, :name, {},{class: "select-form"} %>
+          <%= f.collection_select :delivery_date_id, DeliveryDate.all, :id, :name, {include_blank: "選択してください"},{class: "select-form"} %>
         </div>
 
         <div class="form-half-wrap">
