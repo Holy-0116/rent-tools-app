@@ -1,4 +1,4 @@
-const reset =() =>{
+function reset(){
   // クリアボタンが押されたらイベント発火
   const resetBtn = document.getElementById("reset");
   resetBtn.addEventListener('click',() =>{

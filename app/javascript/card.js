@@ -1,4 +1,4 @@
-const card = () =>{
+function card() {
   Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
   const form = document.getElementById("customer_form");
   // formがなければイベント発火しないようにする記述
