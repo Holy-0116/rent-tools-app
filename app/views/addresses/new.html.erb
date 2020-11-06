@@ -17,7 +17,7 @@
             <div class="address-form-text">
               <label>都道府県</label><span class="required">必須</span>
             </div>
-              <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name,{},{class: "select-form"} %>
+              <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name,{include_blank: "選択してください"},{class: "select-form"} %>
           </div>
 
           <div class="address-form-wrap">

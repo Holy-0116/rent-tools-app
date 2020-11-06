@@ -12,11 +12,9 @@
         <div class="item-image-box">
           <%= image_tag @item.image, class:"item-image" %>
         </div>
-
         <div class="item-explanation">
             <%= @item.explanation %>
-          </div>
-        
+          </div>        
           
         <table  class="details">
           <tbody>
@@ -24,37 +22,30 @@
               <th class="detail-name">出品者</th>
               <td class="detail-text"><%= @item.user.name %></td>  
             </tr>
-
             <tr class="detail">
               <th class="detail-name">サイズ</th>
               <td class="detail-text"><%= @item.size %></td>  
             </tr>
-
             <tr class="detail">
               <th class="detail-name">カテゴリー</th>
               <td class="detail-text"><%= @item.category.name %></td>
             </tr>
-
             <tr class="detail">
               <th class="detail-name">状態</th>
               <td class="detail-text"><%= @item.status.name %></td>
             </tr>
-
             <tr class="detail">
               <th class="detail-name">配送費</th>
               <td class="detail-text"><%= @item.delivery_fee.name %></td>  
             </tr>
-
             <tr class="detail">
               <th class="detail-name">配送までの日数</th>
               <td class="detail-text"><%= @item.delivery_date.name %></td>
             </tr>
-
             <tr class="detail">
               <th class="detail-name">レンタル可能な個数</th>
               <td class="detail-text"><%= @item.stock %></td>
             </tr>
-
             <tr class="detail">
               <th class="detail-name">一日あたりの金額</th>
               <td class="detail-text"><%= @item.price %>円
@@ -62,9 +53,7 @@
             </tr>
           <tbody>
         </table>
-      <%# /商品詳細 %>
-    </div>
-    
+    </div> 
     <%# ボタン %>
     <div class="btn-field">
       <% if current_user == @item.user%>
@@ -81,6 +70,33 @@
         </div>
       <% end %>
     </div>
-
+  </div>
+  <%# コメント表示 %>
+  <div class="item-comment-container">
+    <ul class="item-comments", id="comments">
+      <% @comments.each do |comment| %>
+      <li class="item-comment">
+        <div class="comment-user">
+          <%= comment.borrower.name %>
+        </div>
+        <div class="comment-body">
+          <div class="comment-text">
+            <%= comment.text %>
+          </div>
+          <div class="comment-time">
+            <%= comment.created_at.to_s(:datetime_jp) %> 
+          </div>  
+        </div>
+      </li>
+      <% end %>
+    </ul>
+    <%# 新規コメントフォーム %>
+    <%= form_with model:@comment, url: item_comments_path(@item)  do |f|%>
+      <div class="new-comment">
+        <%= f.text_area :text ,class:"new-comment-text", size:"20x6"%>
+        <%= f.submit "コメントする" , class:"comment-submit",  id:"comment-submit" %>
+      </div>  
+    <% end %>
   </div>
 </div>
+
