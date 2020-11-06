@@ -42,7 +42,7 @@
     <%# 検索結果 %>
     <div class="search-result">
     <% if params[:q][:name_or_explanation_cont] != ""%>
-      <h2 class="search-result-head"><%="#{params[:q][:name_cont]}"%>
+      <h2 class="search-result-head"><%="#{params[:q][:name_or_explanation_cont]}"%>
       <span class="search-result-head-text">の検索結果</span></h2>
     <% else%>
       <h2 class="search-result-head">

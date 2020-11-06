@@ -1,6 +1,6 @@
 var moment = require("moment");
 // 返却日表示関数
-const returnDate = () => {
+function returnDate(){
   // イベント発火
   const event = document.querySelectorAll(".event")
   event.forEach((ev) => ev.addEventListener("change",() =>{

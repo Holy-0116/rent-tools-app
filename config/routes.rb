@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'items#index'
-  resources :items do
+  resources :items do 
     resource :order do
       collection do
         get :select_card
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
         post :create_card
       end
     end
+    resources :comments
   end
   get 'search/keyword'
   get 'search/sort_order'

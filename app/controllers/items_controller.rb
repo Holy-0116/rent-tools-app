@@ -8,6 +8,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @comments = Comment.where(item_id: params[:id])
+    @comment = Comment.new
   end
 
   def new
