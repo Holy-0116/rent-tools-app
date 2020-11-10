@@ -26,12 +26,21 @@ a {
   background-image: image-url('top_image.png');
   background-size: cover;
   background-repeat: no-repeat;
+  ;
 }
 /* トップ画像のテキスト */
 .top-image-text{
-  padding: 250px 0px 0px 50px;
+  padding: 200px 0px 0px 50px;
   color: white;
-  font-size: 30px;
+  text-shadow: 2px 2px 5px black;
+    h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+    p {
+      margin-left: 10px;
+      font-size: 20px;
+    }
 }
 .top-page-container{
   text-align: center;
