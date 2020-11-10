@@ -72,6 +72,7 @@ gem 'momentjs-rails'
 gem 'date_validator'
 gem 'rails-i18n'
 gem 'ransack'
+gem "aws-sdk-s3", require: false
 
 group :production do
   gem 'rails_12factor'
