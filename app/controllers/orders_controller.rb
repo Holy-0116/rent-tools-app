@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :signed_in?
   before_action :set_user
   before_action :set_item
   before_action :set_api_key, only: [:select_card, :set_default_card, :create_card, :create]
@@ -129,6 +130,12 @@ class OrdersController < ApplicationController
 
 
   private
+  
+  def signed_in?
+    unless current_user
+      redirect_to user_session_path
+    end
+  end
   
   def set_user
     @user = User.find_by(id: current_user.id)
