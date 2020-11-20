@@ -1,0 +1,8 @@
+var html = `<%= render 'comments/comment', comments: @comments %>`;
+var commentArea = document.getElementById("comments");
+
+commentArea.innerHTML = "";
+commentArea.insertAdjacentHTML('beforeend', html);
+
+var textArea = document.getElementById("comment_text");
+textArea.value = "";
