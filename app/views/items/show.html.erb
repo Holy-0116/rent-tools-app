@@ -74,27 +74,17 @@
   <%# コメント表示 %>
   <div class="item-comment-container">
     <ul class="item-comments", id="comments">
-      <% @comments.each do |comment| %>
-      <li class="item-comment">
-        <div class="comment-user">
-          <%= comment.borrower.name %>
-        </div>
-        <div class="comment-body">
-          <div class="comment-text">
-            <%= comment.text %>
-          </div>
-          <div class="comment-time">
-            <%= comment.created_at.to_s(:datetime_jp) %> 
-          </div>  
-        </div>
-      </li>
-      <% end %>
+      <%= render 'comments/comment', comment: @comments %>
     </ul>
     <%# 新規コメントフォーム %>
-    <%= form_with model:@comment, url: item_comments_path(@item)  do |f|%>
+    <%= form_with model:@comment, url: item_comments_path(@item ,@comment) ,remote: true do |f|%>
       <div class="new-comment">
-        <%= f.text_area :text ,class:"new-comment-text", size:"20x6"%>
-        <%= f.submit "コメントする" , class:"comment-submit",  id:"comment-submit" %>
+        <% if current_user != nil %>
+          <%= f.text_area :text ,class:"new-comment-text", size:"20x6" %> 
+          <%= f.submit "コメントする" , class:"comment-submit",  id:"comment-submit" %>
+        <% else %>
+          <p class="comment-impossible">ログインするとコメントできるようになります</p>
+        <% end %>
       </div>  
     <% end %>
   </div>

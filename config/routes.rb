@@ -14,7 +14,7 @@ Rails.application.routes.draw do
         post :create_card
       end
     end
-    resources :comments
+    resources :comments, only: [:create, :destroy]
   end
   get 'search/keyword'
   get 'search/sort_order'
