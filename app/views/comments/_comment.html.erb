@@ -1,0 +1,17 @@
+<% @comments.each do |comment| %>
+      <li class="item-comment">
+        <div class="comment-user">
+          <%= comment.borrower.name %>
+        </div>
+        <div class="comment-body">
+          <div class="comment-text">
+            <%= comment.text %>
+          </div>
+          <div class="comment-time">
+            <%= comment.created_at.to_s(:datetime_jp) %> 
+            <%= link_to '削除', item_comment_path(@item, comment), method: :delete, remote: true %>
+          </div>  
+        </div>
+      </li>
+<% end %>
+      
