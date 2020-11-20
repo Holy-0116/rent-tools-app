@@ -3,9 +3,16 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      ActionCable.server.broadcast 'comment_channel', 
-      content: [comment: @comment.text,commenter: @comment.borrower.name, date: @comment.created_at.to_s(:datetime_jp)]
+      @comments = Comment.where(item_id: params[:item_id])
+      @item = Item.find(params[:item_id])
     end
+  end
+
+  def destroy
+    @comments = Comment.where(item_id: params[:item_id])
+    @comment = Comment.find(params[:id])
+    @comment.delete
+    @item = Item.find(params[:item_id])
   end
 
   private
