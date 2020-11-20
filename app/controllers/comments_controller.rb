@@ -1,21 +1,26 @@
 class CommentsController < ApplicationController
+  before_action :set_comments
+  before_action :set_item
 
   def create
     @comment = Comment.new(comment_params)
-    if @comment.save
-      @comments = Comment.where(item_id: params[:item_id])
-      @item = Item.find(params[:item_id])
-    end
+    @comment.save    
   end
 
   def destroy
-    @comments = Comment.where(item_id: params[:item_id])
     @comment = Comment.find(params[:id])
     @comment.delete
-    @item = Item.find(params[:item_id])
   end
 
   private
+
+  def set_comments
+    @comments = Comment.where(item_id: params[:item_id])
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
 
   def comment_params
     params.require(:comment)
