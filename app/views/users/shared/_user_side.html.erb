@@ -2,24 +2,31 @@
     <div class="user-show-sidebar">
       <div class="user-info-content">
         <%=link_to "お知らせ", user_path(current_user) %>
+        <i class="fas fa-angle-right fa-2x"></i>
       </div>
       <div class="user-info-content">
         <%=link_to "本人情報", edit_user_path(current_user) %>
+        <i class="fas fa-angle-right fa-2x"></i>
       </div>
       <div class="user-info-content">
         <a href="#">お気に入り</a>
+        <i class="fas fa-angle-right fa-2x"></i>
       </div>
       <div class="user-info-content">
         <a href="#">レンタル履歴</a>
+        <i class="fas fa-angle-right fa-2x"></i>
       </div>
       <div class="user-info-content">
         <% if current_user.address %>
           <%=link_to "住所変更", edit_user_address_path(current_user) %>
+          <i class="fas fa-angle-right fa-2x"></i>
         <% else %>
           <%=link_to "住所登録", new_user_address_path(current_user) %>
+          <i class="fas fa-angle-right fa-2x"></i>
         <% end %>
       </div>
       <div class="user-info-content">
         <%=link_to "お支払い方法", user_card_path(current_user) %>
+        <i class="fas fa-angle-right fa-2x"></i>
       </div>
     </div>
