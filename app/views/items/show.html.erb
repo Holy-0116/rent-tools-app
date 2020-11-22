@@ -80,7 +80,7 @@
     <%= form_with model:@comment, url: item_comments_path(@item ,@comment) ,remote: true do |f|%>
       <div class="new-comment">
         <% if current_user != nil %>
-          <%= f.text_area :text ,class:"new-comment-text", size:"20x6" %> 
+          <%= f.text_area :text ,class:"new-comment-text", placeholder: "120文字まで投稿できます", size:"20x6" %> 
           <%= f.submit "コメントする" , class:"comment-submit",  id:"comment-submit" %>
         <% else %>
           <p class="comment-impossible">ログインするとコメントできるようになります</p>

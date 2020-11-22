@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :order do
-    association :borrower_id, factory: :user
+    association :borrower, factory: :user
     association :item
     piece       {100}
     start_date  {'2030-1-1'}
