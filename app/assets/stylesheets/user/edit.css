@@ -26,23 +26,7 @@ a {
   justify-content: space-between;
   align-items: flex-start;
 }
-/* サイドバー */
-.user-show-sidebar {
-  background-color: white;
-  width: 300px;
-  box-shadow: 3px 3px 3px gray;
-}
-.user-info-content{
-  height: 60px;
-  border-bottom: 1px black solid;
-  display: flex;
-  align-items: center;
-}
-.user-info-content a{
-  color: black;
-  font-size: 20px;
-  margin-left: 10px;
-}
+
 /* メインフィールド */
 /* 共有 */
 .user-info-field {

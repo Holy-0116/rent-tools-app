@@ -64,11 +64,17 @@ a {
   border-bottom: 1px black solid;
   display: flex;
   align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10px;
+}
+.fa-angle-right {
+  margin-right: 10px;
+  color: #aaa;
 }
 .user-info-content a{
   color: black;
   font-size: 20px;
-  margin-left: 10px;
 }
 /* メインフィールド */
 /* 共有 */

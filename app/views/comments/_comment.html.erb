@@ -7,13 +7,21 @@
           <div class="comment-text">
             <%= safe_join("#{comment.text}".split("\n"),tag(:br)) %>
           </div>
-          <div class="comment-time">
-            <%= comment.created_at.to_s(:datetime_jp) %>
-            <% if current_user == @item.user || current_user == comment.borrower  %> 
-              <%= link_to '削除', item_comment_path(@item, comment), method: :delete, remote: true %>
-            <% end %>
-          </div>  
-        </div>
+          <div class="comment-bottom">
+            <div class="comment-time">
+              <i class="far fa-clock"></i>
+              <%= comment.created_at.to_s(:datetime_jp) %>
+            </div>
+            <div class="comment-delete">
+              <% if current_user == @item.user || current_user == comment.borrower  %> 
+                <%= link_to  item_comment_path(@item, comment), method: :delete, remote: true do%>
+                  <i class="fas fa-trash-alt ", style= "color: #aaa"></i>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>  
+        
       </li>
 <% end %>
       
