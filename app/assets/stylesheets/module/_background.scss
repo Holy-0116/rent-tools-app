@@ -1,0 +1,21 @@
+/* aタグ共有 */
+a {
+  text-decoration: none;
+}
+/* ヘッダー共有ブロック */
+.header {
+  position: fixed;
+  top: 0px;
+  width: 100vw;
+  border-bottom: 1px rgba(0, 0, 0, 0.253) solid;
+  background-color:#ffffff;
+}
+/* 背景 */
+.wrapper{
+  width: 100vw;
+  height: 100vh;
+  padding-top: 90px;
+  background-color: #fffafafa;
+  overflow: hidden;
+  overflow: scroll;
+}

@@ -1,23 +1,4 @@
-/* aタグ共有 */
-a {
-  text-decoration: none;
-}
-/* ヘッダー共有ブロック */
-.header {
-  position: fixed;
-  top: 0px;
-  width: 100vw;
-  border-bottom: 1px rgba(0, 0, 0, 0.253) solid;
-  background-color:#ffffff;
-}
-/* 背景 */
-.wrapper{
-  height: 100vh;
-  padding-top: 90px;
-  background-color: #fffafafa;
-  overflow: hidden;
-  overflow: scroll;
-}
+
 /* signupとsignin用 */
 .user-form-container {
   background-color: white;
@@ -40,14 +21,7 @@ a {
 .user-form-title {
   font-size: 30px;
 }
-/* 必須マーク共有 */
-.required {
-  background-color: red;
-  color: white;
-  margin-left: 5px;
-  padding: 2px;
-  border-radius: 1px;
-}
+
 .user-form-wrap {
   margin-top: 20px;
 }
