@@ -1,7 +1,7 @@
 class CardsController < ApplicationController
   before_action :card_params, only: [:create]
   before_action :set_api_key, only: [:show, :create]
-  
+  before_action :user_signed_in?
   def new
   end
 
@@ -63,4 +63,9 @@ class CardsController < ApplicationController
       params.permit(:card_token, :user_id)
     end
   
+    def user_signed_in?
+      unless current_user
+        redirect_to root_path
+      end
+    end
 end

@@ -6,17 +6,19 @@
   </div>
   <div class="header-right">
     <%# 検索フォーム %>
-    <div class="right-upper">
-      <div class="category">
-        <a href="#">カテゴリーから探す</a>
+    <% if current_user %>
+      <div class="header-search">
+        <div class="category">
+          <a href="#">カテゴリーから探す</a>
+        </div>
+        <div class="search-field">
+          <%=search_form_for @p, url: search_keyword_path, method: :get, local: true do |f|%>
+            <%= f.text_field  :name_or_explanation_cont, class:"search-form",placeholder:"何かお探しですか？" %>
+            <%= f.submit "検索" %> 
+          <% end %>
+        </div>
       </div>
-      <div class="search-field">
-        <%=search_form_for @p, url: search_keyword_path, method: :get, local: true do |f|%>
-          <%= f.text_field  :name_or_explanation_cont, class:"search-form",placeholder:"何かお探しですか？" %>
-          <%= f.submit "検索" %> 
-        <% end %>
-      </div>
-    </div>
+    <% end %>
 
     <div class="right-bottom">
         <% if current_user %>
@@ -24,9 +26,16 @@
             <%= link_to  "#{current_user.name}", user_path(current_user), method: :get %>
           </div>
           <div class="sign-out right-btn">
-            <%=link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn" %>
+            <% if current_user.email == 'guest@example.com'%>
+              <%=link_to "ログアウト", users_guest_delete_path, method: :delete, class: "btn" %>
+            <% else %>
+              <%=link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn" %>
+            <% end %>
           </div>
         <% else %>
+          <div class="new_guest right-btn">
+            <%= link_to 'GUEST' ,users_guest_sign_in_path ,method: :post, class: "btn" %>
+          </div>
           <div class="sign-up right-btn">
             <%= link_to "新規登録", new_user_registration_path, class: "btn" %>
           </div>

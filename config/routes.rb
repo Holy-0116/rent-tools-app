@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
+  root 'home#top'
   devise_for :users
-  root 'items#index'
   resources :items do 
     resource :order do
       collection do
@@ -22,4 +22,6 @@ Rails.application.routes.draw do
     resource :address, only: [:new, :create, :edit, :update]
     resource :card, only: [:new, :create, :show]
   end
+  post '/users/guest_sign_in', to: 'users#new_guest'
+  delete '/users/guest_delete', to: 'users#delete_guest'
 end

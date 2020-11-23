@@ -1,5 +1,6 @@
 class SearchController < ApplicationController
   before_action :search
+  before_action :user_signed_in?
   
   def keyword
   end

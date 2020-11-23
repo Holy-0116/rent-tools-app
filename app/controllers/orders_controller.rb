@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :signed_in?
+  before_action :user_signed_in?
   before_action :set_user
   before_action :set_item
   before_action :set_api_key, only: [:select_card, :set_default_card, :create_card, :create]
@@ -12,26 +12,32 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.valid?
+    # ゲストユーザーではないか確認
+    if current_user.email == 'guest@example.com'
+      flash[:alert] = 'ゲストユーザーではレンタルできません'
+      redirect_to new_item_order_path
+      return
+    end
+    # 住所が正しいか確認
     if current_user.address == nil
       render :new
       return
     end
-    if params[:order][:price] != nil && params[:order][:price] != ""
-      charge_create
-    else
+    # 金額が正しく表示されているか確認
+    if params[:order][:price] == nil && params[:order][:price] == ""
       render :new
       return
     end
     
-      
+    # 全て正しかった場合 
     if @order.valid?
+      charge_create
       @order.save
       stock = (@item.stock.to_i) - (order_params[:piece].to_i)
       @item.update(stock: stock)
+      flash[:notice] = 'レンタル決済が確定しました'
       redirect_to root_path
       OrderMailer.send_when_order_create(@order).deliver
-
     else
       redirect_to new_item_order_path
     end
@@ -71,11 +77,8 @@ class OrdersController < ApplicationController
     else
       flash.now[:alert] = "エラーが発生しました"
       render :new_card
-      
     end
-    
   end
-  
 
   def select_card
     if current_user.card.present? 
@@ -131,9 +134,9 @@ class OrdersController < ApplicationController
 
   private
   
-  def signed_in?
+  def user_signed_in?
     unless current_user
-      redirect_to user_session_path
+      redirect_to root_path
     end
   end
   

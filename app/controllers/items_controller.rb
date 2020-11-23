@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :signed_in?, only: [:new, :create]
+  before_action :user_signed_in?
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :item_user?, only: [:edit, :update, :destroy]
 
@@ -47,9 +47,9 @@ class ItemsController < ApplicationController
 
 
   private
-  def signed_in?
+  def user_signed_in?
     unless current_user
-      redirect_to user_session_path
+      redirect_to root_path
     end
   end
 
