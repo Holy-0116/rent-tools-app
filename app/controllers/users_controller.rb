@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :login_user?, only: [:show, :edit, :update]
+  before_action :user_signed_in?, only: [:show, :edit, :update]
   before_action :correct_user?, only: [:show, :edit, :update]
   before_action :user_params, only: [:update]
   
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
   private
 
-  def login_user?
+  def user_signed_in?
     unless current_user
       redirect_to root_path
     end
