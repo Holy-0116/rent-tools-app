@@ -1,0 +1,95 @@
+/* 必須マーク共有 */
+.required {
+  background-color: red;
+  color: white;
+  margin-left: 5px;
+  padding: 2px;
+  border-radius: 1px;
+}
+/* 選択ボタン共有 */
+.select-form {
+  width: 200px;
+  height: 40px;
+  margin: auto;
+}
+/* ハーフ選択ボタン共有 */
+.form-half-wrap {
+  margin-top: 20px;
+  text-align: right;
+}
+/* 選択ボタン共有 */
+.select-form {
+  width: 150px;
+  height: 40px;
+  margin: auto;
+}
+/* card共通 */
+.card-form-title {
+  text-align: center;
+  font-size: 30px;
+  height: 50px;
+}
+/* card共通 */
+.card-brand-image {
+  display: flex;
+  justify-content: space-evenly;
+  height: 35px;
+  margin-bottom: 20px;
+}
+/* card共通 */
+.card-logo {
+  width: 50px;
+}
+/* 必須マーク共有 */
+.required {
+  background-color: red;
+  color: white;
+  margin-left: 5px;
+  padding: 2px;
+  border-radius: 1px;
+}
+/* 商品画像 */
+.item-image {
+  width: 100%;
+  height: 100%;
+}
+/* order共通 */
+.order-form-container {
+  background-color: white;
+  width: 600px;
+  box-shadow: 3px 3px 3px gray;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 50px 10px 50px 10px; 
+}
+/* order共通 */
+.order-item-wraps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  width: 350px;
+  height: 150px;
+  border-bottom: 1px #ccc solid;
+  padding: 10px 20px;
+}
+/* order共通 */
+.order-form-wraps {
+  margin: auto;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+}
+/* order共通 */
+.order-form-btn {
+  width: 100%; 
+  height: 50px;
+  border: 1px gray solid;
+  box-shadow: 3px 3px 3px gray;
+  border-radius: 3px;
+  margin-top: 50px;
+  color: #7f7e7d;
+  background-color: lightgray;
+}

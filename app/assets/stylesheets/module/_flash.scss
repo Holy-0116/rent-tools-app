@@ -1,0 +1,27 @@
+// フラッシュメッセージ共有
+.flash {
+  position: fixed;
+  width: 100%;
+  height: 30px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #68e8f1;
+  color: #ffffff;
+  position: absolute;
+    top: 15%;
+}
+.flash-alert {
+  position: fixed;
+  width: 100%;
+  height: 30px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  color: #ffffff;
+  position: absolute;
+  top: 15%;
+}
