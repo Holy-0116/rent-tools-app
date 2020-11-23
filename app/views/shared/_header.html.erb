@@ -24,9 +24,16 @@
             <%= link_to  "#{current_user.name}", user_path(current_user), method: :get %>
           </div>
           <div class="sign-out right-btn">
-            <%=link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn" %>
+            <% if current_user.email == 'guest@example.com'%>
+              <%=link_to "ログアウト", users_guest_delete_path, method: :delete, class: "btn" %>
+            <% else %>
+              <%=link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn" %>
+            <% end %>
           </div>
         <% else %>
+          <div class="new_guest right-btn">
+            <%= link_to 'GUEST' ,users_guest_sign_in_path ,method: :post, class: "btn" %>
+          </div>
           <div class="sign-up right-btn">
             <%= link_to "新規登録", new_user_registration_path, class: "btn" %>
           </div>
