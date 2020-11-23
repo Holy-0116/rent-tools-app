@@ -6,17 +6,19 @@
   </div>
   <div class="header-right">
     <%# 検索フォーム %>
-    <div class="right-upper">
-      <div class="category">
-        <a href="#">カテゴリーから探す</a>
+    <% if current_user %>
+      <div class="header-search">
+        <div class="category">
+          <a href="#">カテゴリーから探す</a>
+        </div>
+        <div class="search-field">
+          <%=search_form_for @p, url: search_keyword_path, method: :get, local: true do |f|%>
+            <%= f.text_field  :name_or_explanation_cont, class:"search-form",placeholder:"何かお探しですか？" %>
+            <%= f.submit "検索" %> 
+          <% end %>
+        </div>
       </div>
-      <div class="search-field">
-        <%=search_form_for @p, url: search_keyword_path, method: :get, local: true do |f|%>
-          <%= f.text_field  :name_or_explanation_cont, class:"search-form",placeholder:"何かお探しですか？" %>
-          <%= f.submit "検索" %> 
-        <% end %>
-      </div>
-    </div>
+    <% end %>
 
     <div class="right-bottom">
         <% if current_user %>
