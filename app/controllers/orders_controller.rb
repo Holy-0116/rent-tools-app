@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     # ゲストユーザーではないか確認
-    if current_user.email == 'guest@example.com'
+    if current_user.name == 'GUEST'
       flash[:alert] = 'ゲストユーザーではレンタルできません'
       redirect_to new_item_order_path
       return
