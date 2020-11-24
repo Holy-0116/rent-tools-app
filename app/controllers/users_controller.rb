@@ -13,6 +13,11 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by(id: params[:id])
+    if @user.name == 'GUEST'
+      redirect_to user_path(@user)
+      flash[:alert] = "ゲストユーザーの名前とEmailは編集できません"
+      return
+    end
     if @user.update_without_password(user_params)
       redirect_to user_path(@user)
       flash[:notice] = "変更しました"
@@ -22,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def new_guest
-    user = User.find_or_create_by!(email: 'guest@example.com') do |user|
+    user = User.find_or_create_by!(email: Faker::Internet.free_email) do |user|
       user.password = SecureRandom.hex
       user.name = 'GUEST'
     end
@@ -31,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def delete_guest
-    user = User.find_by(email: 'guest@example.com')
+    user = User.find_by(name: 'GUEST')
     user.destroy
     redirect_to root_path, notice: 'ゲストユーザーからログアウトしました。'
   end

@@ -26,7 +26,7 @@
             <%= link_to  "#{current_user.name}", user_path(current_user), method: :get %>
           </div>
           <div class="sign-out right-btn">
-            <% if current_user.email == 'guest@example.com'%>
+            <% if current_user.name == 'GUEST'%>
               <%=link_to "ログアウト", users_guest_delete_path, method: :delete, class: "btn" %>
             <% else %>
               <%=link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn" %>
