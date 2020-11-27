@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_234536) do
+ActiveRecord::Schema.define(version: 2020_11_24_071922) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -81,6 +81,21 @@ ActiveRecord::Schema.define(version: 2020_11_04_234536) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.bigint "item_id"
+    t.bigint "comment_id"
+    t.bigint "order_id"
+    t.string "action"
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_notifications_on_comment_id"
+    t.index ["item_id"], name: "index_notifications_on_item_id"
+    t.index ["order_id"], name: "index_notifications_on_order_id"
+  end
+
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "borrower_id", null: false
     t.bigint "item_id"
@@ -114,6 +129,9 @@ ActiveRecord::Schema.define(version: 2020_11_04_234536) do
   add_foreign_key "comments", "items"
   add_foreign_key "comments", "users", column: "borrower_id"
   add_foreign_key "items", "users"
+  add_foreign_key "notifications", "comments"
+  add_foreign_key "notifications", "items"
+  add_foreign_key "notifications", "orders"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "users", column: "borrower_id"
 end
