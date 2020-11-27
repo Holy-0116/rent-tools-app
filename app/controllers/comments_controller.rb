@@ -4,7 +4,8 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @comment.save    
+    @comment.save
+    @item.create_notification_comment(current_user, @comment.id) 
   end
 
   def destroy
