@@ -7,7 +7,6 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :email
-    
   end
     validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i}, on: :create
 
@@ -16,5 +15,7 @@ class User < ApplicationRecord
   has_one  :address, dependent: :destroy
   has_many :card,  dependent: :destroy
   has_many :order, dependent: :destroy, foreign_key: "borrower_id"
-  
+  has_many :active_notifications, class_name: "Notification",foreign_key: "visitor_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification",foreign_key: "visited_id", dependent: :destroy
+
 end
