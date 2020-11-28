@@ -42,9 +42,22 @@ class Item < ApplicationRecord
         item_id: id,
         comment_id: comment_id,
         visited_id: visited_id,
-        action: 'comment'
+        action: 'comment',
+        checked: 'false'
       )
       notification.save if notification.valid?
     end
+  end
+
+  def create_notification_order(current_user, order_id)
+    binding.pry
+    notification = current_user.active_notifications.new(
+      item_id: id,
+      order_id: order_id,
+      visited_id: user_id,
+      action: 'order',
+      checked: 'false'
+    )
+    notification.save if notification.valid?
   end
 end
