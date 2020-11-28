@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :borrower, class_name: "User", foreign_key: "borrower_id"
   belongs_to :item
+  belongs_to :notification, dependent: :destroy
 
   with_options presence: true do
     validates :piece, numericality:{ greater_than: 0 }
