@@ -38,7 +38,7 @@
 }
 .login-user {
   font-weight: bold;
-  // height: 30px;
+  position: relative;
 }
 
 .right-btn {
@@ -51,4 +51,11 @@
 }
 .login-user a {
   color: black;
+}
+.unchecked-mark {
+  color: gold;
+  font-size: 5px;
+  position: absolute;
+  top: 11px;
+  left: 60px;
 }
