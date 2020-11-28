@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    @notifications = @user.passive_notifications.order(created_at: "DESC")
   end
   def edit
     @user = User.find_by(id: params[:id])
