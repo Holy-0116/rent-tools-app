@@ -1,15 +1,14 @@
-<% if @user.passive_notifications != [] %>
-  <% @user.passive_notifications.each do |notification|%>
+<% if @notifications != [] %>
+  <% @notifications.each do |notification|%>
     <%= link_to item_path(notification.item_id), local:true do %>
       <div class="notifications">
         <div class="notification-body">
           <%# 通知の内容 %>
           <div class="notification-message">
-          <% binding.pry%>
             <% if notification.action == "comment"%>
               <%="#{notification.visitor.name}さんが「#{notification.item.name}」に対してコメントしました"%>
             <% else %> 
-                <%# 通知がorderだった時のメッセージ %>
+              <%="#{notification.visitor.name}さんから「#{notification.item.name}」の注文がありました。配送手続きをして下さい。"%>
             <% end %>
           </div>
           <%# コメントされた時間 %>
@@ -24,8 +23,11 @@
     <% end %>
   <% end %>
 <% else %>
+
   <div class="nothing-notifications">
     <%="現在お知らせはありません"%>
   </div>
 <% end %>
+<%# 通知を確認したらcheckedをtrueに変えるヘルパーメソッド %>
+<% notification_checkded %>
 

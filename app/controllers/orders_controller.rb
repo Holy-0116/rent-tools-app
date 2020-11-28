@@ -36,8 +36,9 @@ class OrdersController < ApplicationController
       stock = (@item.stock.to_i) - (order_params[:piece].to_i)
       @item.update(stock: stock)
       flash[:notice] = 'レンタル決済が確定しました'
-      redirect_to root_path
       OrderMailer.send_when_order_create(@order).deliver
+      @item.create_notification_order(@user, @order)
+      redirect_to root_path
     else
       redirect_to new_item_order_path
     end

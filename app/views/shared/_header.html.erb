@@ -24,6 +24,9 @@
         <% if current_user %>
           <div class="login-user">
             <%= link_to  "#{current_user.name}", user_path(current_user), method: :get %>
+            <% if unchecked_notifications.any? %>
+              <i class="fas fa-circle unchecked-mark"></i>
+             <% end %>
           </div>
           <div class="sign-out right-btn">
             <% if current_user.name == 'GUEST'%>
