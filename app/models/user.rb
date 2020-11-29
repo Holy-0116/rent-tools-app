@@ -10,7 +10,7 @@ class User < ApplicationRecord
   end
     validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i}, on: :create
 
-  has_many :comments, dependent: :destroy, foreign_key: "borrower_id"
+  has_many :comments, dependent: :destroy
   has_many :items, dependent: :destroy
   has_one  :address, dependent: :destroy
   has_many :card,  dependent: :destroy
