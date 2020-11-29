@@ -1,7 +1,7 @@
 <% @comments.each do |comment| %>
       <li class="item-comment">
         <div class="comment-user">
-          <%= comment.borrower.name %>
+          <%= comment.user.name %>
         </div>
         <div class="comment-body">
           <div class="comment-text">
@@ -13,7 +13,7 @@
               <%= comment.created_at.to_s(:datetime_jp) %>
             </div>
             <div class="comment-delete">
-              <% if current_user == @item.user || current_user == comment.borrower  %> 
+              <% if current_user == @item.user || current_user == comment.user  %> 
                 <%= link_to  item_comment_path(@item, comment), method: :delete, remote: true do%>
                   <i class="fas fa-trash-alt ", style= "color: #aaa"></i>
                 <% end %>

@@ -57,12 +57,12 @@ ActiveRecord::Schema.define(version: 2020_11_24_071922) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id", null: false
-    t.bigint "borrower_id", null: false
+    t.bigint "user_id", null: false
     t.text "text", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["borrower_id"], name: "index_comments_on_borrower_id"
     t.index ["item_id"], name: "index_comments_on_item_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -127,7 +127,7 @@ ActiveRecord::Schema.define(version: 2020_11_24_071922) do
   add_foreign_key "addresses", "users"
   add_foreign_key "cards", "users"
   add_foreign_key "comments", "items"
-  add_foreign_key "comments", "users", column: "borrower_id"
+  add_foreign_key "comments", "users"
   add_foreign_key "items", "users"
   add_foreign_key "notifications", "comments"
   add_foreign_key "notifications", "items"
