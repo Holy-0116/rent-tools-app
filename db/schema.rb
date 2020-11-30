@@ -82,18 +82,20 @@ ActiveRecord::Schema.define(version: 2020_11_24_071922) do
   end
 
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "visitor_id", null: false
-    t.integer "visited_id", null: false
+    t.bigint "visitor_id", null: false
+    t.bigint "visited_id", null: false
     t.bigint "item_id"
     t.bigint "comment_id"
     t.bigint "order_id"
-    t.string "action"
+    t.string "action", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["comment_id"], name: "index_notifications_on_comment_id"
     t.index ["item_id"], name: "index_notifications_on_item_id"
     t.index ["order_id"], name: "index_notifications_on_order_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -132,6 +134,8 @@ ActiveRecord::Schema.define(version: 2020_11_24_071922) do
   add_foreign_key "notifications", "comments"
   add_foreign_key "notifications", "items"
   add_foreign_key "notifications", "orders"
+  add_foreign_key "notifications", "users", column: "visited_id"
+  add_foreign_key "notifications", "users", column: "visitor_id"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "users", column: "borrower_id"
 end
