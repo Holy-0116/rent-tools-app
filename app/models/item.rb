@@ -50,7 +50,6 @@ class Item < ApplicationRecord
   end
 
   def create_notification_order(current_user, order_id)
-    binding.pry
     notification = current_user.active_notifications.new(
       item_id: id,
       order_id: order_id,

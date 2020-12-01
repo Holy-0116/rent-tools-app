@@ -25,6 +25,9 @@
           <%= f.submit "ログイン", class: "user-form-btn" %>
         </div>
       <% end%>
+        <div class="get-sign-up">
+          <p>アカウントをお持ちでない場合は <%= link_to "新規登録", new_user_registration_path, class: "get-sign-up-btn" %></p>
+        </div>
     </div>
   </div>
 </div>
