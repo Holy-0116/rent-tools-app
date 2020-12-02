@@ -97,3 +97,49 @@ RSpec.describe "ユーザーログイン", type: :system do
     end
   end
 end
+
+RSpec.describe "ユーザー情報編集", type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+  end
+
+  context "ユーザー情報を編集できるとき" do
+    it "登録したユーザー本人でログインして、正しい情報が入力されれば更新されてユーザー詳細ページに遷移する" do
+      # ログインする
+      sign_in @user
+      # ユーザー編集ページに移動する
+      visit edit_user_path(@user)
+      # ユーザー情報（名前）を編集する
+      fill_in "名前", with: "test"
+      # 変更するボタンを押すと、ユーザーの情報が更新される
+      expect{ find('input[value="変更する"]').click}.to change{ User.find(@user.id).name }.from(@user.name).to("test")
+      # ユーザー詳細ページに遷移していることを確認する
+      expect(current_path).to eq user_path(@user)
+      # 変更した名前が表示されていることを確認する
+      expect(page).to have_content("test")
+    end
+  end
+
+  context "ユーザー情報を編集できないとき" do
+    it "登録したユーザー本人でログインしても、誤った情報を入力すると更新はされずユーザー編集ページに戻ってくる" do
+      # ログインする
+      sign_in @user
+      # ユーザー編集ページに移動する
+      visit edit_user_path(@user)
+      # ユーザー情報（名前）を編集する
+      fill_in "名前", with: ""
+      # 変更するボタンを押す
+      find('input[value="変更する"]').click
+      # ユーザー編集ページに戻っていることを確認する
+      expect(current_path).to eq user_path(@user)
+      # 登録時の名前が表示されていることを確認する
+      expect(page).to have_content("#{@user.name}")
+    end
+    it "ログインしていないユーザーは編集ページに遷移できず、トップページに戻ってくる" do
+      # ログインせずにユーザー編集ページへアクセスする
+      visit edit_user_path(@user)
+      # トップページに戻っていることを確認する
+      expect(current_path).to eq root_path
+    end
+  end
+end
