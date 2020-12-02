@@ -9,14 +9,14 @@
         <%= render 'shared/error_message', model: f.object %>
         <div class="user-form-wrap">
           <div class="user-form-text">
-            <label>Eメール</label>
+            <label for="user_email">Eメール</label>
           </div>
           <%= f.text_field :email, class: "user-form", placeholder:"登録時のメールアドレス" %>
         </div>
 
         <div class="user-form-wrap">
           <div class="user-form-text">
-            <label>パスワード</label>
+            <label for="user_password">パスワード</label>
           </div>
           <%= f.text_field :password, class: "user-form", placeholder:"登録時のパスワード", type: "password" %>
         </div>
