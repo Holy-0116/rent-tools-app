@@ -10,35 +10,35 @@
         <%= render 'shared/error_message', model: f.object %>
         <div class="user-form-wrap">
           <div class="user-form-text">
-            <label>名前</label><span class="required">必須</span>
+            <label for="user_name">名前</label><span class="required">必須</span>
           </div>
           <%= f.text_field :name, class: "user-form", placeholder: "例）山田 太郎"%>
         </div>
 
         <div class="user-form-wrap">
           <div class="user-form-text">
-            <label>Eメール</label><span class="required">必須</span>
+            <label for="user_email">Eメール</label><span class="required">必須</span>
           </div>
           <%= f.text_field :email, class: "user-form", placeholder: "PC・携帯どちらでも可" %>
         </div>
 
         <div class="user-form-wrap">
           <div class="user-form-text">
-            <label>パスワード</label><span class="required">必須</span>
+            <label for="user_password">パスワード</label><span class="required">必須</span>
           </div>
           <%= f.text_field :password, class: "user-form", placeholder: "８文字以上の半角英数混合", type: "password" %>
         </div>
 
         <div class="user-form-wrap">
           <div class="user-form-text">
-            <label>パスワード（確認用）</label><span class="required">必須</span>
+            <label for="user_password_confirmation">パスワード（確認用）</label><span class="required">必須</span>
           </div>
           <%= f.text_field :password_confirmation, class: "user-form", placeholder: "パスワードを再入力してください", type: "password" %>
         </div>
 
         <div class="user-form-wrap">
           <div class="user-form-text">
-            <label>会社名</label>
+            <label for="user_company_name">会社名</label>
           </div>
           <%= f.text_field :company_name, class: "user-form", placeholder: "※個人での利用の方は省略可" %>
         </div>
