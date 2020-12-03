@@ -9,70 +9,70 @@
         <%= render 'shared/error_message', model: f.object %>
         <div class="item-form-wrap">
           <div class="item-form-text">
-            <label>商品名</label><span class="required">必須</span>
+            <label for="item_name">商品名</label><span class="required">必須</span>
           </div>
           <%= f.text_field :name, placeholder: "商品名", class: "item-form" %>
         </div>
 
         <div class="item-form-wrap">
           <div class="item-form-text">
-            <label>画像</label><span class="required">必須</span>
+            <label for="item_image">画像</label><span class="required">必須</span>
           </div>
           <%= f.file_field :image, placeholder: "" %>
         </div>
 
         <div class="item-form-wrap">
           <div class="item-form-text">
-            <label>商品の説明</label><span class="required">必須</span>
+            <label for="item_explanation">商品の説明</label><span class="required">必須</span>
           </div>
           <%= f.text_area :explanation, placeholder: "商品の説明(120文字)", class: "item-explanation-form",size: "20x6" %>
         </div>
 
         <div class="item-form-wrap">
           <div class="item-form-text">
-            <label>サイズ</label><span class="required">必須</span>
+            <label for="item_size">サイズ</label><span class="required">必須</span>
           </div>
           <%= f.text_field :size, placeholder: "例）15cm" , class: "item-form"%>
         </div>
 
         <div class="form-half-wrap">
           <div class="item-form-text">
-            <label>カテゴリー</label><span class="required">必須</span>
+            <label for="item_category_id">カテゴリー</label><span class="required">必須</span>
           </div>  
             <%= f.collection_select :category_id, Category.all, :id, :name, {include_blank: "選択してください"}, {class: "select-form"} %>
           </div>
 
         <div class="form-half-wrap">
           <div class="item-form-text">
-            <label>商品の状態</label><span class="required">必須</span>
+            <label for="item_status">商品の状態</label><span class="required">必須</span>
           </div>
           <%= f.collection_select :status_id, Status.all, :id, :name, {include_blank: "選択してください"}, {class: "select-form"} %>
         </div>
 
         <div class="form-half-wrap">
           <div class="item-form-text">
-            <label>配送料</label><span class="required">必須</span>
+            <label for="item_delivery_fee_id">配送料</label><span class="required">必須</span>
           </div>
           <%= f.collection_select :delivery_fee_id, DeliveryFee.all, :id, :name, {include_blank: "選択してください"}, {class: "select-form"} %>
         </div>
 
         <div class="form-half-wrap">
           <div class="item-form-text">
-            <label>発送までの日数</label><span class="required">必須</span>
+            <label for="item_delivery_date_id">発送までの日数</label><span class="required">必須</span>
           </div>
           <%= f.collection_select :delivery_date_id, DeliveryDate.all, :id, :name, {include_blank: "選択してください"},{class: "select-form"} %>
         </div>
 
         <div class="form-half-wrap">
           <div class="item-form-text">
-            <label>在庫数</label><span class="required">必須</span>
+            <label for="item_stock">在庫数</label><span class="required">必須</span>
           </div>
           <%= f.number_field :stock, placeholder: "半角数字 例）12", class: "item-form",style: "width:150px",min: 1 %>
         </div>
 
         <div class="form-half-wrap">
           <div class="item-form-text">
-            <label>１週間のレンタル価格（単価）</label><span class="required">必須</span>
+            <label for="item_price">１週間のレンタル価格（単価）</label><span class="required">必須</span>
           </div>
           <span>￥</span>
           <%= f.text_field :price, placeholder: "半角数字 例）500" , class: "item-price-form"%>
