@@ -83,7 +83,7 @@ RSpec.describe "商品編集", type: :system do
       # 編集ページに移動する
       visit edit_item_path(@item)
       # 登録時の商品の情報が表示されていることを確認する
-      expect(page).to have_content(@item.name)
+      expect(find('input[id="item_name"]').value).to eq @item.name
       # 入力フォームに商品情報（金額）を入力する
       fill_in "１週間のレンタル価格（単価）", with: @item.price.to_i + 100
       # 再出品するボタンを押すと商品の情報が更新される
@@ -162,7 +162,7 @@ RSpec.describe "商品削除", type: :system do
       # 商品詳細ページに移動する
       visit item_path(@item)
       # 削除ボタンが表示されていないことを確認する
-      expect(page).to have_content( "削除")
+      expect(page).to have_no_content( "削除")
     end
   end
 end
