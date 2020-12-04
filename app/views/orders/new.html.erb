@@ -49,38 +49,38 @@
         <%= render 'shared/error_message', model: f.object %>
         <div class="form-half-wrap">
           <div class="item-form-text">
-            <%= f.label "レンタルする個数" %><span class="required">必須</span>
+            <label for="order_piece">レンタルする個数</label><span class="required">必須</span>
           </div>
           <%= f.number_field :piece, placeholder: "半角数字", class: "item-form event",style: "width:100px",min: 1, max: @item.stock %>
         </div>
 
         <div class="form-half-wrap">
           <div class="item-form-text">
-            <%= f.label "レンタル開始日" %><span class="required">必須</span>
+            <label for="order_start_date">レンタル開始日</label><span class="required">必須</span>
           </div>
           <%= f.date_field :start_date, class:"order-date-form event",style: "width:200px", min: Date.current.tomorrow %>
         </div>
 
         <div class="form-half-wrap">
           <div class="item-form-text">
-            <%= f.label "レンタル期間" %><span class="required">必須</span>
+            <label for="order_period">レンタル期間</label><span class="required">必須</span>
           </div>
           <%= f.number_field :period, class:"order-period-form event", style: "width:50px",min: 1 %><span> 週間</span>
         </div>
 
         <div class="form-half-wrap">
           <div class="item-form-text">
-            <%= f.label "返却日" %>
+            <label for="order_return_date">返却日</label>
           </div>
           <div class="order-result-form">
-            <div id="return_date"></div>
+            <div id="return_date" style="height: 25px"></div>
           </div>
         </div>
 
         <div class="form-half-wrap">
           <div class="item-form-text">
-            <%= f.label "料金" %>
-          </div>
+            <label for="order_order_price_input">料金</label> 
+         </div>
           <div class="order-result-form">
             <div id="order_price"></div><span>円</span>
             <%= f.hidden_field :price, min: 1 , id: "order_price_input" %>
