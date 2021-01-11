@@ -12,23 +12,34 @@
   width: 250px;
   box-shadow: 3px 3px 3px gray;
 }
-.user-info-content{
-  height: 60px;
-  border-bottom: 1px black solid;
-  display: flex;
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 10px;
+.user-info-area {
+  .user-info-content{
+    height: 60px;
+    border-bottom: 1px black solid;
+    display: flex;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 10px;
+  }
+  .user-info-content p{
+    color: black;
+    font-size: 20px;
+  }
+  .fa-angle-right {
+    margin-right: 10px;
+    color: #aaa;
+  }
+  :hover{
+    background-color: rgb(199, 197, 197);
+    .fa-angle-right {
+      font-size: 40px;
+      color: rgb(87, 86, 86);
+      margin-right: 0px;
+    }
+  }
 }
-.fa-angle-right {
-  margin-right: 10px;
-  color: #aaa;
-}
-.user-info-content a{
-  color: black;
-  font-size: 20px;
-}
+
 /* メインフィールド */
 .user-info-field {
   box-shadow: 3px 3px 3px gray;
